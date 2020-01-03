@@ -1,0 +1,150 @@
+#--------------------------------------------------------------------------------------
+#
+#     $Source: MstnExamples/MixedMode/ElementPropertiesExample/ElementPropertiesExample.mke $
+#
+#  $Copyright: (c) 2015 Bentley Systems, Incorporated. All rights reserved. $
+#
+#--------------------------------------------------------------------------------------
+
+DemoSrcDir   = $(_MakeFilePath)
+PolicyFile = MicroStationPolicy.mki
+appName    = PDIWT_Waterway_Lock
+sAppName   = PDIWT_Waterway_Lock
+ASSEMBLY_NAME       = $(appName)
+RIGHTSCOMPLIANT     = false
+
+MDLMKI = $(MSMDE)mki/
+
+mdlLibs = $(MSMDE)library/
+
+#--------------------------------------------------------------------------------------------------
+#  Includes
+#--------------------------------------------------------------------------------------------------
+
+%include        mdl.mki
+
+outputDir = $(MS)Mdlapps/
+
+#----------------------------------------------------------------------
+#       Create output directories
+#----------------------------------------------------------------------
+always:
+    ~mkdir $(o)
+
+objList = $(o)Program$(oext) \
+#          $(o)DimWithNoteTool$(oext) \
+#          $(o)DimWithNoteToolWinForm$(oext) \
+#          $(o)DimByElementTool$(oext) \
+#          $(o)ElevationNoteToolWinForm$(oext) \
+#          $(o)ElevationNoteTool$(oext) \
+
+#----------------------------------------------------------------------
+# Create the command table include file.
+#----------------------------------------------------------------------
+$(gensrcTransKit)$(sAppName)cmd.h        : $(baseDir)$(sAppname).keyins
+
+%include compileForCLRStart.mki
+
+#----------------------------------------------------------------------
+# Compile ForwardDeclarationProblem file with debug off so we don't
+# get the dummy defs for our native types in the debugger
+#----------------------------------------------------------------------
+CCompDebugOptions = $(CCompDebugOffSwitch)
+
+CCompDebugOptions =% $[CCompDebugDefault]
+
+CCompOpts + -AI$(MS)Assemblies -AI$(MS)Assemblies/ECFramework -AI$(MS) -AI$(o)
+
+dirToSearch = ${msPrivInc}
+
+$(o)Program$(oext) : $(baseDir)Program.cpp
+#
+#$(o)DimWithNoteTool$(oext) : $(baseDir)DimWithNoteTool.cpp
+#
+#$(o)DimWithNoteToolWinForm$(oext) : $(baseDir)DimWithNoteToolWinForm.cpp
+#
+#$(o)ElevationNoteToolWinForm$(oext) : $(baseDir)ElevationNoteToolWinForm.cpp
+#
+#$(o)ElevationNoteTool$(oext) : $(baseDir)ElevationNoteTool.cpp
+#
+#$(o)DimByElementTool$(oext) : $(baseDir)DimByElementTool.cpp
+#
+%include compileForCLRStop.mki
+
+#----------------------------------------------------------------------
+#   Set up to use dlmlink.mki
+#----------------------------------------------------------------------
+DLM_OBJECT_DEST         = $(o)
+DLM_NAME                = $(appname)
+RIGHTSCOMPLIANT         = true
+DLM_DEST                = $(outputDir)
+DLM_OBJECT_FILES        = $(objList)
+DLM_NO_DEF              = 1
+DLM_NO_DLS              = 1
+DLM_NO_IMPLIB           = 1
+# Only for test apps; any delivered app MUST be signed.
+DLM_NO_SIGN = 1
+
+ASSEMBLY_VERSION        = 1.0.0.0
+ASSEMBLY_STRONGNAME     = 0
+ASSEMBLY_KEYFILE        = $(baseDir)$(appName).snk
+ASSEMBLY_TITLE          = $(appName)
+ASSEMBLY_DESCRIPTION    = waterway solid creation assembly
+ASSEMBLY_PRODUCT_NAME   = $(appName)
+ASSEMBLY_FILE_VERSION   = 1.0.0.0
+ASSEMBLY_COMPANY_NAME   = Water Transportation Consultant CO. LTD
+ASSEMBLY_COPYRIGHT      = Copyright: (c) 2020 PDIWT Systems, Incorporated. All rights reserved.
+
+LINKER_LIBRARIES            + $(mdlLibs)3dModeling.lib
+LINKER_LIBRARIES            + $(mdlLibs)animcore.lib
+LINKER_LIBRARIES            + $(mdlLibs)BaseGeoCoord.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.GeoCoord.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.imodelconnection.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.imodelmessage.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.MicroStation.MaterialControl.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.PrintDefinitions.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.PrintFoundation.lib
+LINKER_LIBRARIES            + $(mdlLibs)BentleyAllocator.lib
+LINKER_LIBRARIES            + $(mdlLibs)BentleyGeom.lib
+LINKER_LIBRARIES            + $(mdlLibs)BentleyGeomSerialization.lib
+LINKER_LIBRARIES            + $(mdlLibs)BeXml.lib
+LINKER_LIBRARIES            + $(mdlLibs)Constraint2dCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)Constraint2dElement.lib
+LINKER_LIBRARIES            + $(mdlLibs)Constraint3dCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)Constraint3dElement.lib
+LINKER_LIBRARIES            + $(mdlLibs)dbpwise.lib
+LINKER_LIBRARIES            + $(mdlLibs)DgnGeoCoord.lib
+LINKER_LIBRARIES            + $(mdlLibs)DgnPlatform.lib
+LINKER_LIBRARIES            + $(mdlLibs)DgnView.lib
+LINKER_LIBRARIES            + $(mdlLibs)ECObjects.lib
+LINKER_LIBRARIES            + $(mdlLibs)ImageLib.lib
+LINKER_LIBRARIES            + $(mdlLibs)InsolationLib.lib
+LINKER_LIBRARIES            + $(mdlLibs)mdlbltin.lib
+LINKER_LIBRARIES            + $(mdlLibs)mdlxmltools.lib
+LINKER_LIBRARIES            + $(mdlLibs)mspsolid.lib
+LINKER_LIBRARIES            + $(mdlLibs)mstntoolsubs.lib
+LINKER_LIBRARIES            + $(mdlLibs)nativewindow.lib
+LINKER_LIBRARIES            + $(mdlLibs)nativewinmfc.lib
+LINKER_LIBRARIES            + $(mdlLibs)PointCloud.lib
+LINKER_LIBRARIES            + $(mdlLibs)PSolidAcisInterop.lib
+LINKER_LIBRARIES            + $(mdlLibs)PSolidCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)Publish.lib
+LINKER_LIBRARIES            + $(mdlLibs)RasterCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)rasterlib.lib
+LINKER_LIBRARIES            + $(mdlLibs)RmgrTools.lib
+LINKER_LIBRARIES            + $(mdlLibs)SmartFeature.lib
+LINKER_LIBRARIES            + $(mdlLibs)splindlm.lib
+LINKER_LIBRARIES            + $(mdlLibs)sqlite3.lib
+LINKER_LIBRARIES            + $(mdlLibs)TerrainModelCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)TerrainModelElementHandler.lib
+LINKER_LIBRARIES            + $(mdlLibs)videolib.lib
+LINKER_LIBRARIES            + $(mdlLibs)VisEdgesLib.lib
+
+#----------------------------------------------------------------------
+# Add the command table to the dll.
+#----------------------------------------------------------------------
+ASSEMBLY_COMMAND_TABLE = $(baseDir)$(sAppname).keyins
+%include AssemblyAddCommandTableResource.mki
+
+%include linkMixedAssembly.mki

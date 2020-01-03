@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KeyinTree xmlns="http://www.bentley.com/schemas/1.0/MicroStation/AddIn/KeyinTree.xsd">
+
+  <RootKeyinTable ID="root">
+    <Keyword SubtableRef="WaterwaySubKeyin" CommandClass="MacroCommand" CommandWord="Waterway">
+      <Options Required="true" />
+    </Keyword>
+  </RootKeyinTable>
+
+  <SubKeyinTables>
+    <KeyinTable ID="WaterwaySubKeyin">
+      <Keyword CommandWord="Create" SubtableRef="CreateSubKeyin">
+        <Options Required="true" />
+      </Keyword>
+    </KeyinTable>
+  </SubKeyinTables>
+
+  <SubKeyinTables>
+    <KeyinTable ID="CreateSubKeyin">
+      <Keyword CommandWord="DolphinP1"></Keyword>
+      <Keyword CommandWord="DolphinP11"></Keyword>
+      <Keyword CommandWord="GuidewallP2"></Keyword>
+      <Keyword CommandWord="GuidewallP3"></Keyword>
+    </KeyinTable>
+  </SubKeyinTables>
+
+  <KeyinHandlers>
+    <KeyinHandler Keyin="Waterway Create DolphinP1" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateDolphinP1"/>
+    <KeyinHandler Keyin="Waterway Create DolphinP11" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateDolphinP11"/>
+    <KeyinHandler Keyin="Waterway Create GuidewallP2" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateGuidewallP2"/>
+    <KeyinHandler Keyin="Waterway Create GuidewallP3" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateGuidewallP3"/>
+  </KeyinHandlers>
+  
+</KeyinTree>
