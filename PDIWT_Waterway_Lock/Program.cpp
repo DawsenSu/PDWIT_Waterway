@@ -19,4 +19,5 @@ void PDIWT::Waterway::Lock::KeyinCommands::CreateGuidewallP2(System::String^ unp
 
 void PDIWT::Waterway::Lock::KeyinCommands::CreateGuidewallP3(System::String^ unparsed)
 {
-	mdlOutput_message(L"CreateGuidewallP3");}
+	mdlOutput_message(L"CreateGuidewallP3");
+}

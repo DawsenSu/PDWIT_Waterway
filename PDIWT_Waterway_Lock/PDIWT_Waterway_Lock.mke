@@ -135,7 +135,7 @@ LINKER_LIBRARIES            + $(mdlLibs)rasterlib.lib
 LINKER_LIBRARIES            + $(mdlLibs)RmgrTools.lib
 LINKER_LIBRARIES            + $(mdlLibs)SmartFeature.lib
 LINKER_LIBRARIES            + $(mdlLibs)splindlm.lib
-LINKER_LIBRARIES            + $(mdlLibs)sqlite3.lib
+#LINKER_LIBRARIES            + $(mdlLibs)sqlite3.lib
 LINKER_LIBRARIES            + $(mdlLibs)TerrainModelCore.lib
 LINKER_LIBRARIES            + $(mdlLibs)TerrainModelElementHandler.lib
 LINKER_LIBRARIES            + $(mdlLibs)videolib.lib
