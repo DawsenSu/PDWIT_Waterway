@@ -38,6 +38,7 @@ USING_NAMESPACE_BENTLEY_ECOBJECT
 
 #define PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN	namespace PDIWT { namespace Waterway { namespace Lock {
 #define PDIWT_WATERWAY_LOCK_NAMESPACE_END }}}
+#define	USING_NAMESPACE_PDIWT_WATERWAY_LOCK using namespace PDIWT::Waterway::Lock;
 
 using namespace System;
 using namespace System::Reflection;
