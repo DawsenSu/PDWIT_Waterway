@@ -42,10 +42,10 @@
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Cushioncap">
+  <Class Name="DolphinColumnP1_P11">
     <Position X="5.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>

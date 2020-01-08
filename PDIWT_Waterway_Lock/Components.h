@@ -3,6 +3,13 @@
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN
 
+//////////////////////////////////////////////////////////////////////////
+//
+//	P1		桩基式靠船墩
+//	P11		重力式靠船墩、重力式隔流墙
+//	P2		桩基挂板式导航墙
+//	P3		重力式导航墙
+//////////////////////////////////////////////////////////////////////////
 #define UOR_Var(type, var, factor) type uor_##var = var * factor;
 class IParametersValidate {
 public:
@@ -10,7 +17,8 @@ public:
 	virtual ~IParametersValidate() = default;
 };
 
-class Dolphin : IParametersValidate
+// Su
+class DolphinColumnP2 : IParametersValidate
 {
 private:
 	// Dolphin
@@ -23,13 +31,37 @@ private:
 		BE_PRIVATE_VALUE(double, dolphinSubtractWallThickness)
 		BE_PRIVATE_VALUE(double, dolphinSubtractWallHeight)
 public:
-	Dolphin(double topLength, double topWidth, double bottomLength, double bottomWidth, double height, double subtractWallThickness, double subtractWallHeight)
+	DolphinColumnP2(double topLength, double topWidth, double bottomLength, double bottomWidth, double height, double subtractWallThickness, double subtractWallHeight)
 		:m_dolphinTopLength(topLength), m_dolphinTopWidth(topWidth), m_dolphinBottomLength(bottomLength), m_dolphinBottomWidth(bottomWidth), m_dolphinHeight(height),
 		m_dolphinSubtractWallThickness(subtractWallThickness), m_dolphinSubtractWallHeight(subtractWallHeight) {}
 	bool ValidateParameters() override;
-	BentleyStatus CrerateDolphin(EditElementHandleR ele, DgnModelRefR mdoel)
+	BentleyStatus CrerateDolphin(EditElementHandleR ele, DgnModelRefR model);
 };
 
+/************************************************************************/
+/* Cui & Duan										*/
+/* The dolphin of P1 and P11											*/
+/************************************************************************/
+class DolphinColumnP1_P11 : IParametersValidate
+{
+private:
+
+public:
+	bool ValidateParameters() override;
+	BentleyStatus CreateDolphin(EditElementHandleR eeh, DgnModelRefR model);
+};
+
+// Nan
+class DolphinColumnP3 : IParametersValidate
+{
+private:
+
+public:
+	bool ValidateParameters() override;
+	BentleyStatus CreateDolphin(EditElementHandleR eeh, DgnModelRefR model);
+};
+
+// Su
 class Cushioncap : IParametersValidate
 {
 private:
@@ -50,6 +82,7 @@ public:
 	bool ValidateParameters() override;
 };
 
+// Su
 // The unit of this pile is meter
 class Pile : IParametersValidate
 {
@@ -66,6 +99,7 @@ public:
 	BentleyStatus CreatePile(EditElementHandleR eeh, DgnModelRefR modelToInsert);
 };
 
+// nan
 class Cushion : IParametersValidate
 {
 private:
@@ -79,7 +113,7 @@ public:
 	bool ValidateParameters() override;
 	BentleyStatus CreateCushion(EditElementHandleR eeh, DgnModelRefR modelToInsert);
 };
-
+// su
 class Wall : IParametersValidate
 {
 	//wall
@@ -92,7 +126,7 @@ class Wall : IParametersValidate
 public:
 	bool ValidateParameters() override;
 };
-
+// su
 class Fender : IParametersValidate
 {
 	//fender
@@ -102,7 +136,6 @@ class Fender : IParametersValidate
 public:
 	bool ValidateParameters() override;
 };
-
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_END
 
