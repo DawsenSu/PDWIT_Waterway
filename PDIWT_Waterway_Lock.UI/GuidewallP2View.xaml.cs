@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PDIWT_Waterway_Lock.UI
+namespace PDIWT.Waterway.Lock.UI
 {
     /// <summary>
     /// Interaction logic for GuidewalP2View.xaml
     /// </summary>
-    public partial class GuidewalP2View : UserControl
+    public partial class GuidewallP2View : UserControl
     {
-        public GuidewalP2View()
+        public GuidewallP2View()
         {
             InitializeComponent();
         }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PDIWT_Waterway_Lock.UI.Properties
+namespace PDIWT.Waterway.Lock.UI.Properties
 {
     
     

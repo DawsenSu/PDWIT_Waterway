@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Transkit>
+
+    <SatelliteAssembly DllName="PDIWT_Waterway_Lock" DeliverEnglish="False" RightsCompliant="False">
+        <ResxFile ResourceName="PDIWT_Waterway_Lock.GuidewallP2WinForm.Resources" FileName="GuidewallP2WinForm.resx" />
+    </SatelliteAssembly>
+
+</Transkit>

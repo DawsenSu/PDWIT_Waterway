@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GuidewallP2Tool">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EIBAAEAAAAABAAAAAAgAAAAAAQgAABAAAAAAEAAAAAA=</HashCode>
+      <FileName>GuidewallP2Tool.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuidewallP2">
+    <Position X="8" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAIAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>GuidewallP2.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fender" Collapsed="true">
+    <Position X="10.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wall" Collapsed="true">
+    <Position X="12.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cushion">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pile">
+    <Position X="7.5" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cushioncap">
+    <Position X="5.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IParametersValidate">
+    <Position X="9" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAQ=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="GuideWallP2Data" Collapsed="true">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GuidewallP2.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
