@@ -86,7 +86,7 @@ DLM_NO_IMPLIB           = 1
 DLM_NO_SIGN = 1
 
 ASSEMBLY_VERSION        = 1.0.0.0
-ASSEMBLY_STRONGNAME     = 0
+ASSEMBLY_STRONGNAME     = 1
 ASSEMBLY_KEYFILE        = $(baseDir)$(appName).snk
 ASSEMBLY_TITLE          = $(appName)
 ASSEMBLY_DESCRIPTION    = waterway solid creation assembly
@@ -135,7 +135,7 @@ LINKER_LIBRARIES            + $(mdlLibs)rasterlib.lib
 LINKER_LIBRARIES            + $(mdlLibs)RmgrTools.lib
 LINKER_LIBRARIES            + $(mdlLibs)SmartFeature.lib
 LINKER_LIBRARIES            + $(mdlLibs)splindlm.lib
-LINKER_LIBRARIES            + $(mdlLibs)sqlite3.lib
+#LINKER_LIBRARIES            + $(mdlLibs)sqlite3.lib
 LINKER_LIBRARIES            + $(mdlLibs)TerrainModelCore.lib
 LINKER_LIBRARIES            + $(mdlLibs)TerrainModelElementHandler.lib
 LINKER_LIBRARIES            + $(mdlLibs)videolib.lib
