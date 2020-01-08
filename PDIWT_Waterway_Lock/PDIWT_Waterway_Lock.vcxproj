@@ -128,23 +128,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BeDefiner.h" />
+    <ClInclude Include="Components.h" />
+    <ClInclude Include="GuidewallP2.h" />
+    <ClInclude Include="GuidewallP2Tool.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Components.cpp" />
+    <ClCompile Include="GuidewallP2.cpp" />
+    <ClCompile Include="GuidewallP2Tool.cpp" />
     <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="PDIWT_Waterway_Lock.keyins" />
     <None Include="PDIWT_Waterway_Lock.mke" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="profile drawing.png" />
+    <Image Include="topview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PDIWT_Waterway_Lock.UI\PDIWT_Waterway_Lock.UI.csproj">
+      <Project>{d4da36f5-1be2-4bd1-95c0-44650d6c236c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

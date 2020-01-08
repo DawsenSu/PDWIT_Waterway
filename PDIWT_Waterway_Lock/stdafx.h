@@ -12,6 +12,9 @@
 #include <DgnPlatform\DgnPlatformAPI.h>
 #include <DgnPlatform/DimensionHandler.h>
 #include <DgnPlatform/ISettings.h>
+#include <PSolid\PSolidCoreAPI.h>
+
+#include "BeDefiner.h"
 
 #pragma managed(pop)
 #include <vcclr.h>
@@ -29,6 +32,10 @@
 #using <Bentley.General.1.0.dll>
 #using <Bentley.MicroStation.Interfaces.1.0.dll>
 #using <Bentley.MicroStation.dll>
+#using <Bentley.MicroStation.WPF.dll>
+#using <Bentley.UI.dll>
+#using <Bentley.Windowing.dll>
+#using <PDIWT_Waterway_Lock.UI.dll>
 
 USING_NAMESPACE_BENTLEY
 USING_NAMESPACE_BENTLEY_DGNPLATFORM
@@ -53,3 +60,4 @@ namespace BD = Bentley::DgnPlatformNET;
 namespace BDE = Bentley::DgnPlatformNET::Elements;
 namespace BM = Bentley::MstnPlatformNET;
 namespace BMW = Bentley::MstnPlatformNET::WinForms;
+namespace BMWPF = Bentley::MstnPlatformNET::WPF;

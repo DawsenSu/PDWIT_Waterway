@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "GuidewallP2Tool.h"
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN
 //////////////////////////////////////////////////////////////////////////
