@@ -13,7 +13,6 @@
 #include <DgnPlatform/DimensionHandler.h>
 #include <DgnPlatform/ISettings.h>
 #include <PSolid\PSolidCoreAPI.h>
-
 #include "BeDefiner.h"
 
 #pragma managed(pop)

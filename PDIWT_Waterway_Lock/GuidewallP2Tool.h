@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Program.h"
+#include "GuidewallP2.h"
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN
 class GuidewallP2Tool :  DgnPrimitiveTool

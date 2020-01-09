@@ -32,8 +32,9 @@ always:
     ~mkdir $(o)
 
 objList = $(o)Program$(oext) \
+          $(o)Components$(oext) \
+		  $(o)GuidewallP2$(oext) \
           $(o)GuidewallP2Tool$(oext) \
-#          $(o)GuidewallP2WinForm$(oext) \
 #          $(o)DimByElementTool$(oext) \
 #          $(o)ElevationNoteToolWinForm$(oext) \
 #          $(o)ElevationNoteTool$(oext) \
@@ -58,6 +59,10 @@ CCompOpts + -AI$(MS)Assemblies -AI$(MS)Assemblies/ECFramework -AI$(MS) -AI$(o) -
 dirToSearch = ${msPrivInc}
 
 $(o)Program$(oext) : $(baseDir)Program.cpp
+
+$(o)Components$(oext) : $(baseDir)Components.cpp
+
+$(o)GuidewallP2$(oext) : $(baseDir)GuidewallP2.cpp
 
 $(o)GuidewallP2Tool$(oext) : $(baseDir)GuidewallP2Tool.cpp
 

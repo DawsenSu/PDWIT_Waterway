@@ -33,6 +33,7 @@ namespace PDIWT.Waterway.Lock.UI
             ToggleLabelForeColor(cushioncapFrontChamferLengthTextBox, new Label[]{ cushioncapFrontChamferLengthLabel});
             //pile
             ToggleLabelForeColor(pileTopEleTextBox, new Label[]{ pileTopEleLabel});
+            ToggleLabelForeColor(pileBottomEleTextBox, new Label[] { pileBottomEleLabel });
             //cushion
             ToggleLabelForeColor(cushionThicknesTextBox, new Label[] { cushionThicknessLabel });
             //wall

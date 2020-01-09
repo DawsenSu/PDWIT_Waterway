@@ -6,32 +6,71 @@ PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN
 struct GuideWallP2Data : IParametersValidate
 {
 	// position information
-//dolphin postion information	
-	BE_PRIVATE_VALUE(double, dolphinTopElevation)
-		BE_PRIVATE_VALUE(double, dolphinBottomElevation)
+	//dolphin
+	BE_DATA_VALUE(double, dolphinTopElevation)
+		BE_DATA_VALUE(double, dolphinBottomElevation)
+		BE_DATA_VALUE(double, dolphinTopLength)
+		BE_DATA_VALUE(double, dolphinTopWidth)
+		BE_DATA_VALUE(double, dolphinBottomLength)
+		BE_DATA_VALUE(double, dolphinBottomWidth)
 
-		// pile position information
-		BE_PRIVATE_VALUE(double, pileTopElevation)
-		BE_PRIVATE_VALUE(double, pileOffsetAlongRiver)
-		BE_PRIVATE_VALUE(double, pileOffsetPerpendicularRiver)
+		//cushioncap
+		BE_DATA_VALUE(double, cushioncapBottomElevation)
+		BE_DATA_VALUE(double, cushioncapFrontToeLength)
+		BE_DATA_VALUE(double, cushioncapRearToeLength)
+		BE_DATA_VALUE(double, cushioncapExtraSideLength)
+		BE_DATA_VALUE(double, cushioncapChamferLength)
+
+		// pile
+		BE_DATA_VALUE(double, pileTopElevation)
+		BE_DATA_VALUE(double, pileBottomElevation)
+		BE_DATA_VALUE(double, pileDiameter)
+		BE_DATA_VALUE(double, pilewallThickness)
+		BE_DATA_VALUE(double, pileOffsetAlongRiver)
+		BE_DATA_VALUE(double, pileOffsetPerpendicularRiver)
+		
+		//cushion
+		BE_DATA_VALUE(double, cushionThickness)
+
+		//wall
+		BE_DATA_VALUE(double, wallTopElevation)
+		BE_DATA_VALUE(double, wallBottomElevation)
+		BE_DATA_VALUE(double, wallThickness)
+		BE_DATA_VALUE(double, wallLength)
+		BE_DATA_VALUE(bool, hasLeftWall)
+		BE_DATA_VALUE(bool, hasRightWall)
+public:
+		virtual bool ValidateParameters() override;
+
 };
 
+//typedef RefCountedPtr<DolphinColumnP2> DolphinColumnP2Ptr;
+//typedef RefCountedPtr<Cushioncap> CushioncapPtr;
+//typedef RefCountedPtr<Pile> PilePtr;
+//typedef RefCountedPtr<Cushion> CushionPtr;
+//typedef RefCountedPtr<Wall> WallPtr;
 
-class GuidewallP2
+class GuidewallP2 
 {
 private:
-	GuideWallP2Data m_data;
-	void BuildComponents();
-public:
-	void TransformComponents(DgnButtonEventCR ev);
-	// composition parts
-	BE_DATA_REFER(Dolphin, dolphin)
-	BE_DATA_REFER(Cushioncap, cushioncap)
-	BE_DATA_REFER(Pile, pile)
-	BE_DATA_REFER(Cushion, cushion)
-	BE_DATA_REFER(Wall, wall)
-	BE_DATA_REFER(Fender, fender)
+	double gapWidth = 0.02; // unit: m
+	double bridgeHeigth = 0.57; //m
+	double cushionExtraLength = 0.1; //m
 
+	GuideWallP2Data			m_data;
+
+	DolphinColumnP2		m_dolphin;
+	Cushioncap			m_cushioncap;
+	bvector<Pile>		m_piles;
+	Cushion				m_cushion;
+	bvector<Wall>		m_walls;
+
+
+	BentleyStatus		InitializeComponents();
+public:
+	GuidewallP2(const GuideWallP2Data& data) : m_data(data) {  }
+	BentleyStatus		CreateGuidewallP2(EditElementHandleR eeh, DgnModelRefR model);
+	~GuidewallP2();
 };
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_END

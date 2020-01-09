@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GuidewallP2WinForm));
             this.fenderTopEleTextBox = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
             this.wallRightCheckBox = new System.Windows.Forms.CheckBox();
             this.wallLeftCheckBox = new System.Windows.Forms.CheckBox();
             this.wallLengthTextBox = new System.Windows.Forms.TextBox();
@@ -40,8 +39,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.wallBottomEleTextBox = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.fenderThicknessTextBox = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
             this.fenderBottomEleTextBox = new System.Windows.Forms.TextBox();
             this.pilesTab = new System.Windows.Forms.TabPage();
             this.pileOffsetPerpendicularTextBox = new System.Windows.Forms.TextBox();
@@ -139,6 +136,9 @@
             this.label47 = new System.Windows.Forms.Label();
             this.cushioncapExtraSideLengthLabel = new System.Windows.Forms.Label();
             this.pileTopEleLabel = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.pileBottomEleTextBox = new System.Windows.Forms.TextBox();
             this.pilesTab.SuspendLayout();
             this.dolphinTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -156,15 +156,6 @@
             this.fenderTopEleTextBox.Name = "fenderTopEleTextBox";
             this.fenderTopEleTextBox.Size = new System.Drawing.Size(65, 20);
             this.fenderTopEleTextBox.TabIndex = 39;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(6, 66);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(31, 13);
-            this.label43.TabIndex = 37;
-            this.label43.Text = "厚度";
             // 
             // wallRightCheckBox
             // 
@@ -243,22 +234,6 @@
             this.label34.TabIndex = 22;
             this.label34.Text = "m";
             // 
-            // fenderThicknessTextBox
-            // 
-            this.fenderThicknessTextBox.Location = new System.Drawing.Point(86, 62);
-            this.fenderThicknessTextBox.Name = "fenderThicknessTextBox";
-            this.fenderThicknessTextBox.Size = new System.Drawing.Size(65, 20);
-            this.fenderThicknessTextBox.TabIndex = 38;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(157, 65);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(15, 13);
-            this.label44.TabIndex = 34;
-            this.label44.Text = "m";
-            // 
             // fenderBottomEleTextBox
             // 
             this.fenderBottomEleTextBox.Location = new System.Drawing.Point(86, 36);
@@ -268,7 +243,9 @@
             // 
             // pilesTab
             // 
+            this.pilesTab.Controls.Add(this.pileBottomEleTextBox);
             this.pilesTab.Controls.Add(this.pileOffsetPerpendicularTextBox);
+            this.pilesTab.Controls.Add(this.label44);
             this.pilesTab.Controls.Add(this.pileOffsetAlongRiverTextBox);
             this.pilesTab.Controls.Add(this.label30);
             this.pilesTab.Controls.Add(this.label28);
@@ -277,6 +254,7 @@
             this.pilesTab.Controls.Add(this.pileDiameterTextBox);
             this.pilesTab.Controls.Add(this.label24);
             this.pilesTab.Controls.Add(this.pileTopEleTextBox);
+            this.pilesTab.Controls.Add(this.label43);
             this.pilesTab.Controls.Add(this.label22);
             this.pilesTab.Controls.Add(this.label29);
             this.pilesTab.Controls.Add(this.label27);
@@ -293,14 +271,14 @@
             // 
             // pileOffsetPerpendicularTextBox
             // 
-            this.pileOffsetPerpendicularTextBox.Location = new System.Drawing.Point(86, 116);
+            this.pileOffsetPerpendicularTextBox.Location = new System.Drawing.Point(86, 142);
             this.pileOffsetPerpendicularTextBox.Name = "pileOffsetPerpendicularTextBox";
             this.pileOffsetPerpendicularTextBox.Size = new System.Drawing.Size(65, 20);
             this.pileOffsetPerpendicularTextBox.TabIndex = 15;
             // 
             // pileOffsetAlongRiverTextBox
             // 
-            this.pileOffsetAlongRiverTextBox.Location = new System.Drawing.Point(86, 87);
+            this.pileOffsetAlongRiverTextBox.Location = new System.Drawing.Point(86, 113);
             this.pileOffsetAlongRiverTextBox.Name = "pileOffsetAlongRiverTextBox";
             this.pileOffsetAlongRiverTextBox.Size = new System.Drawing.Size(65, 20);
             this.pileOffsetAlongRiverTextBox.TabIndex = 15;
@@ -308,7 +286,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(157, 119);
+            this.label30.Location = new System.Drawing.Point(157, 145);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(15, 13);
             this.label30.TabIndex = 7;
@@ -317,7 +295,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(157, 90);
+            this.label28.Location = new System.Drawing.Point(157, 116);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(15, 13);
             this.label28.TabIndex = 7;
@@ -325,7 +303,7 @@
             // 
             // pileThicknessTextBox
             // 
-            this.pileThicknessTextBox.Location = new System.Drawing.Point(86, 61);
+            this.pileThicknessTextBox.Location = new System.Drawing.Point(86, 87);
             this.pileThicknessTextBox.Name = "pileThicknessTextBox";
             this.pileThicknessTextBox.Size = new System.Drawing.Size(65, 20);
             this.pileThicknessTextBox.TabIndex = 16;
@@ -333,7 +311,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(157, 64);
+            this.label26.Location = new System.Drawing.Point(157, 90);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(23, 13);
             this.label26.TabIndex = 8;
@@ -341,7 +319,7 @@
             // 
             // pileDiameterTextBox
             // 
-            this.pileDiameterTextBox.Location = new System.Drawing.Point(86, 35);
+            this.pileDiameterTextBox.Location = new System.Drawing.Point(86, 61);
             this.pileDiameterTextBox.Name = "pileDiameterTextBox";
             this.pileDiameterTextBox.Size = new System.Drawing.Size(65, 20);
             this.pileDiameterTextBox.TabIndex = 17;
@@ -349,7 +327,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(157, 38);
+            this.label24.Location = new System.Drawing.Point(157, 64);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(15, 13);
             this.label24.TabIndex = 9;
@@ -374,7 +352,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(6, 120);
+            this.label29.Location = new System.Drawing.Point(6, 146);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(67, 13);
             this.label29.TabIndex = 11;
@@ -383,7 +361,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(6, 91);
+            this.label27.Location = new System.Drawing.Point(6, 117);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(67, 13);
             this.label27.TabIndex = 11;
@@ -401,7 +379,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 64);
+            this.label23.Location = new System.Drawing.Point(6, 90);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(31, 13);
             this.label23.TabIndex = 13;
@@ -410,7 +388,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 38);
+            this.label21.Location = new System.Drawing.Point(6, 64);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(31, 13);
             this.label21.TabIndex = 14;
@@ -1209,13 +1187,10 @@
             // 
             // fenderTab
             // 
-            this.fenderTab.Controls.Add(this.fenderThicknessTextBox);
-            this.fenderTab.Controls.Add(this.label44);
             this.fenderTab.Controls.Add(this.fenderBottomEleTextBox);
             this.fenderTab.Controls.Add(this.label31);
             this.fenderTab.Controls.Add(this.fenderTopEleTextBox);
             this.fenderTab.Controls.Add(this.label36);
-            this.fenderTab.Controls.Add(this.label43);
             this.fenderTab.Controls.Add(this.label41);
             this.fenderTab.Controls.Add(this.label42);
             this.fenderTab.Location = new System.Drawing.Point(4, 22);
@@ -1258,6 +1233,31 @@
             this.pileTopEleLabel.TabIndex = 30;
             this.pileTopEleLabel.Text = "桩基顶高程";
             this.pileTopEleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(6, 39);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(43, 13);
+            this.label43.TabIndex = 11;
+            this.label43.Text = "底高程";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(157, 38);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(15, 13);
+            this.label44.TabIndex = 7;
+            this.label44.Text = "m";
+            // 
+            // pileBottomEleTextBox
+            // 
+            this.pileBottomEleTextBox.Location = new System.Drawing.Point(86, 35);
+            this.pileBottomEleTextBox.Name = "pileBottomEleTextBox";
+            this.pileBottomEleTextBox.Size = new System.Drawing.Size(65, 20);
+            this.pileBottomEleTextBox.TabIndex = 15;
             // 
             // GuidewallP2WinForm
             // 
@@ -1320,7 +1320,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox fenderTopEleTextBox;
-        private System.Windows.Forms.Label label43;
         private System.Windows.Forms.CheckBox wallRightCheckBox;
         private System.Windows.Forms.CheckBox wallLeftCheckBox;
         private System.Windows.Forms.TextBox wallLengthTextBox;
@@ -1330,8 +1329,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox wallBottomEleTextBox;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox fenderThicknessTextBox;
-        private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox fenderBottomEleTextBox;
         private System.Windows.Forms.TabPage pilesTab;
         private System.Windows.Forms.TextBox pileOffsetPerpendicularTextBox;
@@ -1429,5 +1426,8 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label cushioncapExtraSideLengthLabel;
         private System.Windows.Forms.Label pileTopEleLabel;
+        private System.Windows.Forms.TextBox pileBottomEleTextBox;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label43;
     }
 }

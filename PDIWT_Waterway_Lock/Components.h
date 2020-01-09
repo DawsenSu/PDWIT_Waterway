@@ -10,7 +10,10 @@ PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN
 //	P2		桩基挂板式导航墙
 //	P3		重力式导航墙
 //////////////////////////////////////////////////////////////////////////
+
+
 #define UOR_Var(type, var, factor) type uor_##var = var * factor;
+
 class IParametersValidate {
 public:
 	virtual bool ValidateParameters() = 0;
@@ -31,11 +34,12 @@ private:
 		BE_PRIVATE_VALUE(double, dolphinSubtractWallThickness)
 		BE_PRIVATE_VALUE(double, dolphinSubtractWallHeight)
 public:
+	DolphinColumnP2() {}
 	DolphinColumnP2(double topLength, double topWidth, double bottomLength, double bottomWidth, double height, double subtractWallThickness, double subtractWallHeight)
 		:m_dolphinTopLength(topLength), m_dolphinTopWidth(topWidth), m_dolphinBottomLength(bottomLength), m_dolphinBottomWidth(bottomWidth), m_dolphinHeight(height),
 		m_dolphinSubtractWallThickness(subtractWallThickness), m_dolphinSubtractWallHeight(subtractWallHeight) {}
 	bool ValidateParameters() override;
-	BentleyStatus CrerateDolphin(EditElementHandleR ele, DgnModelRefR model);
+	BentleyStatus CrerateDolphin(EditElementHandleR eeh, DgnModelRefR model);
 };
 
 /************************************************************************/
@@ -65,21 +69,19 @@ public:
 class Cushioncap : IParametersValidate
 {
 private:
-	//cushioncap
-	BE_PRIVATE_VALUE(double, cushioncapBottomElevation)
-		BE_PRIVATE_VALUE(double, cushioncapFrontToeLength)
-		BE_PRIVATE_VALUE(double, cushioncapRearToeLength)
-		BE_PRIVATE_VALUE(double, cushioncapExtraSideLength)
-		BE_PRIVATE_VALUE(double, cushioncapChamferLength)
-
-		//cushioncap
-		BE_PRIVATE_VALUE(double, cushioncapTopWidth)
-		BE_PRIVATE_VALUE(double, cushioncapTopLength)
+	BE_PRIVATE_VALUE(double, cushioncapTopWidth)
 		BE_PRIVATE_VALUE(double, cushioncapBottomWidth)
-		BE_PRIVATE_VALUE(double, cushioncapBottomLength)
 		BE_PRIVATE_VALUE(double, cushioncapHeight)
+		BE_PRIVATE_VALUE(double, cushioncapLength)
+
 public:
+	Cushioncap() {}
+	Cushioncap(double topWidth, double bottomWidth, double height, double length)
+		: m_cushioncapTopWidth(topWidth), m_cushioncapBottomWidth(bottomWidth), m_cushioncapHeight(height), m_cushioncapLength(length) {}
+	Cushioncap(double width,double height, double length)
+		: m_cushioncapTopWidth(width), m_cushioncapBottomWidth(width),m_cushioncapHeight(height), m_cushioncapLength(length) {}
 	bool ValidateParameters() override;
+	BentleyStatus CreateCushioncap(EditElementHandleR eeh, DgnModelRefR model);
 };
 
 // Su
@@ -92,7 +94,7 @@ private:
 		BE_PRIVATE_VALUE(double, pileDiameter)
 		BE_PRIVATE_VALUE(double, pileThickness)
 public:
-	Pile() : m_pileLength(10), m_pileDiameter(0.8), m_pileThickness(0.1) {}
+	Pile() {}
 	Pile(double length, double diameter, double thickness)
 		: m_pileLength(length), m_pileDiameter(diameter), m_pileThickness(thickness) {}
 	bool ValidateParameters() override;
@@ -108,34 +110,40 @@ private:
 		BE_PRIVATE_VALUE(double, cushionLength)
 		BE_PRIVATE_VALUE(double, cushionWidth)
 public:
+	Cushion() {}
 	Cushion(double length, double width, double thickness)
 		: m_cushionLength(length), m_cushionWidth(width), m_cushionThickness(thickness) {}
 	bool ValidateParameters() override;
 	BentleyStatus CreateCushion(EditElementHandleR eeh, DgnModelRefR modelToInsert);
 };
+
 // su
 class Wall : IParametersValidate
 {
+private:
 	//wall
-	BE_DATA_VALUE(double, wallTopElevation)
-		BE_DATA_VALUE(double, wallBottomElevation)
+	BE_DATA_VALUE(double, wallLength)
+		BE_DATA_VALUE(double, wallHeight)
 		BE_DATA_VALUE(double, wallThickness)
-		BE_DATA_VALUE(double, wallLength)
-		BE_DATA_VALUE(bool, hasLeftWall)
-		BE_DATA_VALUE(bool, hasRightWall)
+
 public:
+	Wall() {}
+	Wall(double length, double height, double thickness)
+		:m_wallLength(length), m_wallHeight(height), m_wallThickness(thickness) {}
 	bool ValidateParameters() override;
+	BentleyStatus CreateWall(EditElementHandleR eeh, DgnModelRefR model);
 };
+
 // su
-class Fender : IParametersValidate
-{
-	//fender
-	BE_DATA_VALUE(double, fenderTopElevation)
-		BE_DATA_VALUE(double, fenderBottomElevation)
-		BE_DATA_VALUE(double, fenderThickness)
-public:
-	bool ValidateParameters() override;
-};
+//class Fender : IParametersValidate
+//{
+//	//fender
+//	BE_DATA_VALUE(double, fenderTopElevation)
+//		BE_DATA_VALUE(double, fenderBottomElevation)
+//		BE_DATA_VALUE(double, fenderThickness)
+//public:
+//	bool ValidateParameters() override;
+//};
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_END
 
