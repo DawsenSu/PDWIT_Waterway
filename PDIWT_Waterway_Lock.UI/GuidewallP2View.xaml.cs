@@ -23,6 +23,7 @@ namespace PDIWT.Waterway.Lock.UI
         public GuidewallP2View()
         {
             InitializeComponent();
+            DataContext = new ViewModel.GuidewallP2ViewModel();
         }
     }
 }

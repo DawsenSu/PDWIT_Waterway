@@ -54,6 +54,7 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 using namespace System::Runtime::InteropServices;
+using namespace System::Windows::Media::Imaging;
 
 namespace BD = Bentley::DgnPlatformNET;
 namespace BDE = Bentley::DgnPlatformNET::Elements;

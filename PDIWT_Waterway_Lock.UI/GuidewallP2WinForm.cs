@@ -11,8 +11,8 @@ using System.Windows.Forms;
 namespace PDIWT.Waterway.Lock.UI
 {
     public partial class GuidewallP2WinForm
-    : Bentley.MstnPlatformNET.WinForms.Adapter
-    //: Form
+    //: Bentley.MstnPlatformNET.WinForms.Adapter
+    : Form
     {
         public GuidewallP2WinForm()
         {

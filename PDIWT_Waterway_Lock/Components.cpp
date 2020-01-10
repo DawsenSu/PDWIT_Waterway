@@ -108,14 +108,14 @@ bool PDIWT::Waterway::Lock::Pile::ValidateParameters()
 	return true;
 }
 
-BentleyStatus PDIWT::Waterway::Lock::Pile::CreatePile(EditElementHandleR eeh, DgnModelRefR modelToInsert)
+BentleyStatus PDIWT::Waterway::Lock::Pile::CreatePile(EditElementHandleR eeh, DgnModelRefR model)
 {
 	if (!ValidateParameters())
 		return ERROR;
-	double uorpermeter = modelToInsert.GetModelInfoCP()->GetUorPerMeter();
-	double uorLength = GetpileLength() * uorpermeter;
-	double uorDiameter = GetpileDiameter() * uorpermeter;
-	double uorThickness = GetpileThickness() * uorpermeter;
+	double uorpermeter = model.GetModelInfoCP()->GetUorPerMeter();
+	double uorLength = m_pileLength * uorpermeter;
+	double uorDiameter = m_pileDiameter * uorpermeter;
+	double uorThickness = m_pileThickness * uorpermeter;
 
 	DPoint3d topCenter;
 	DPoint3d bottomCenter = topCenter + DVec3d::From(0, 0, -uorLength);
@@ -126,13 +126,13 @@ BentleyStatus PDIWT::Waterway::Lock::Pile::CreatePile(EditElementHandleR eeh, Dg
 	DgnConeDetail innerCylinder = DgnConeDetail(topCenter, bottomCenter, uorDiameter / 2 - uorThickness, uorDiameter / 2 - uorThickness, true);
 	ISolidPrimitivePtr innerCylinderPtr = ISolidPrimitive::CreateDgnCone(innerCylinder);
 	ISolidKernelEntityPtr outerCylinderEntityPtr, innerCylinderEntityPtr;
-	if (ERROR == SolidUtil::Create::BodyFromSolidPrimitive(outerCylinderEntityPtr, *outerCylinderPtr, modelToInsert))
+	if (ERROR == SolidUtil::Create::BodyFromSolidPrimitive(outerCylinderEntityPtr, *outerCylinderPtr, model))
 		return ERROR;
-	if (ERROR == SolidUtil::Create::BodyFromSolidPrimitive(innerCylinderEntityPtr, *innerCylinderPtr, modelToInsert))
+	if (ERROR == SolidUtil::Create::BodyFromSolidPrimitive(innerCylinderEntityPtr, *innerCylinderPtr, model))
 		return ERROR;
 	if (ERROR == SolidUtil::Modify::BooleanSubtract(outerCylinderEntityPtr, &innerCylinderEntityPtr, 1))
 		return ERROR;
-	if (ERROR == SolidUtil::Convert::BodyToElement(eeh, *outerCylinderEntityPtr, nullptr, modelToInsert))
+	if (ERROR == DraftingElementSchema::ToElement(eeh, *outerCylinderEntityPtr, nullptr, model))
 		return ERROR;
 	return SUCCESS;
 }
@@ -145,11 +145,11 @@ bool PDIWT::Waterway::Lock::Cushion::ValidateParameters()
 	return true;
 }
 
-BentleyStatus PDIWT::Waterway::Lock::Cushion::CreateCushion(EditElementHandleR eeh, DgnModelRefR modelToInsert)
+BentleyStatus PDIWT::Waterway::Lock::Cushion::CreateCushion(EditElementHandleR eeh, DgnModelRefR model)
 {
 	if (!ValidateParameters())
 		return ERROR;
-	double uorpermeter = modelToInsert.GetModelInfoCP()->GetUorPerMeter();
+	double uorpermeter = model.GetModelInfoCP()->GetUorPerMeter();
 	UOR_Var(double, m_cushionLength, uorpermeter)
 		UOR_Var(double, m_cushionWidth, uorpermeter)
 		UOR_Var(double, m_cushionThickness, uorpermeter)
@@ -158,7 +158,7 @@ BentleyStatus PDIWT::Waterway::Lock::Cushion::CreateCushion(EditElementHandleR e
 		-uor_m_cushionLength / 2,0,uor_m_cushionThickness }, DVec3d::UnitX(), DVec3d::UnitY(), uor_m_cushionLength,
 		uor_m_cushionWidth, uor_m_cushionLength, uor_m_cushionWidth, true);
 	ISolidPrimitivePtr cushionSolidPtr = ISolidPrimitive::CreateDgnBox(cushionDetail);
-	if (ERROR == DraftingElementSchema::ToElement(eeh, *cushionSolidPtr, NULL, modelToInsert))
+	if (ERROR == DraftingElementSchema::ToElement(eeh, *cushionSolidPtr, NULL, model))
 		return ERROR;
 	return SUCCESS;
 }
@@ -186,4 +186,9 @@ BentleyStatus PDIWT::Waterway::Lock::Wall::CreateWall(EditElementHandleR eeh, Dg
 	if (ERROR == DraftingElementSchema::ToElement(eeh, *wallSolidPtr, NULL, model))
 		return ERROR;
 	return SUCCESS;
+}
+
+bool PDIWT::Waterway::Lock::Bridge::ValidateParameters()
+{
+	return true;
 }

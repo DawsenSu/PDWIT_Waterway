@@ -26,7 +26,7 @@ struct GuideWallP2Data : IParametersValidate
 		BE_DATA_VALUE(double, pileBottomElevation)
 		BE_DATA_VALUE(double, pileDiameter)
 		BE_DATA_VALUE(double, pilewallThickness)
-		BE_DATA_VALUE(double, pileOffsetAlongRiver)
+		//BE_DATA_VALUE(double, pileOffsetAlongRiver)
 		BE_DATA_VALUE(double, pileOffsetPerpendicularRiver)
 		
 		//cushion
@@ -39,6 +39,14 @@ struct GuideWallP2Data : IParametersValidate
 		BE_DATA_VALUE(double, wallLength)
 		BE_DATA_VALUE(bool, hasLeftWall)
 		BE_DATA_VALUE(bool, hasRightWall)
+
+		//Bridge
+		BE_DATA_VALUE(double, bridgeLength)
+		BE_DATA_VALUE(double, bridgeHeight)
+		BE_DATA_VALUE(double, bridgeWidth)
+		BE_DATA_VALUE(double, bridgeTopBoardThickness)
+		BE_DATA_VALUE(double, bridgeSupportWidth)
+		BE_DATA_VALUE(double, bridgeChamferWidth)
 public:
 		virtual bool ValidateParameters() override;
 
@@ -61,16 +69,15 @@ private:
 
 	DolphinColumnP2		m_dolphin;
 	Cushioncap			m_cushioncap;
-	bvector<Pile>		m_piles;
+	Pile				m_pile;
 	Cushion				m_cushion;
-	bvector<Wall>		m_walls;
+	Wall				m_wall;
 
 
 	BentleyStatus		InitializeComponents();
 public:
 	GuidewallP2(const GuideWallP2Data& data) : m_data(data) {  }
 	BentleyStatus		CreateGuidewallP2(EditElementHandleR eeh, DgnModelRefR model);
-	~GuidewallP2();
 };
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_END

@@ -98,7 +98,7 @@ public:
 	Pile(double length, double diameter, double thickness)
 		: m_pileLength(length), m_pileDiameter(diameter), m_pileThickness(thickness) {}
 	bool ValidateParameters() override;
-	BentleyStatus CreatePile(EditElementHandleR eeh, DgnModelRefR modelToInsert);
+	BentleyStatus CreatePile(EditElementHandleR eeh, DgnModelRefR mdoel);
 };
 
 // nan
@@ -114,7 +114,7 @@ public:
 	Cushion(double length, double width, double thickness)
 		: m_cushionLength(length), m_cushionWidth(width), m_cushionThickness(thickness) {}
 	bool ValidateParameters() override;
-	BentleyStatus CreateCushion(EditElementHandleR eeh, DgnModelRefR modelToInsert);
+	BentleyStatus CreateCushion(EditElementHandleR eeh, DgnModelRefR model);
 };
 
 // su
@@ -134,6 +134,22 @@ public:
 	BentleyStatus CreateWall(EditElementHandleR eeh, DgnModelRefR model);
 };
 
+class Bridge : IParametersValidate
+{
+	BE_DATA_VALUE(double, length)
+		BE_DATA_VALUE(double, width)
+		BE_DATA_VALUE(double, height)
+		BE_DATA_VALUE(double, topBoardThickness)
+		BE_DATA_VALUE(double, supportWidth)
+		BE_DATA_VALUE(double, chamferWidth)
+public :
+	Bridge() {}
+	Bridge(double length, double width, double height, double topBoardThickness, double supportWidth, double chamferWidth)
+		: m_length(length), m_width(width), m_height(height), m_topBoardThickness(topBoardThickness), m_supportWidth(supportWidth), m_chamferWidth(chamferWidth) {}
+	bool ValidateParameters() override;
+	BentleyStatus CreateBridge(EditElementHandleR eeh, DgnModelRefR model);
+	
+};
 // su
 //class Fender : IParametersValidate
 //{
