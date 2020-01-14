@@ -190,5 +190,51 @@ BentleyStatus PDIWT::Waterway::Lock::Wall::CreateWall(EditElementHandleR eeh, Dg
 
 bool PDIWT::Waterway::Lock::Bridge::ValidateParameters()
 {
+	if (m_length <= 0
+		|| m_width <= 0
+		|| m_height <= 0
+		|| m_topBoardThickness <= 0
+		|| m_supportWidth <= 0
+		|| m_chamferWidth <= 0
+		)
+		return false;
+	if (m_height <= m_topBoardThickness + m_chamferWidth
+		|| m_width <= 2 * (m_supportWidth + m_chamferWidth)
+		)
+		return false;
 	return true;
+}
+
+BentleyStatus PDIWT::Waterway::Lock::Bridge::CreateBridge(EditElementHandleR eeh, DgnModelRefR model)
+{
+	if (!ValidateParameters())
+		return ERROR;
+	double uorpermeter = model.GetModelInfoCP()->GetUorPerMeter();
+	UOR_Var(double, m_length, uorpermeter)
+		UOR_Var(double, m_width, uorpermeter)
+		UOR_Var(double, m_height, uorpermeter)
+		UOR_Var(double, m_topBoardThickness, uorpermeter)
+		UOR_Var(double, m_supportWidth, uorpermeter)
+		UOR_Var(double, m_chamferWidth, uorpermeter)
+		bvector<DVec3d> dvecVec = { DVec3d::From(0,0,uor_m_height),
+			DVec3d::From(0,uor_m_width),
+			DVec3d::From(0,0,-uor_m_height),
+			DVec3d::From(0,-uor_m_supportWidth),
+			DVec3d::From(0,0,uor_m_height - uor_m_topBoardThickness - uor_m_chamferWidth),
+			DVec3d::From(0,-uor_m_chamferWidth,uor_m_chamferWidth),
+			DVec3d::From(0,-(uor_m_width - 2 * uor_m_supportWidth - 2 * uor_m_chamferWidth)),
+			DVec3d::From(0,-uor_m_chamferWidth,-uor_m_chamferWidth),
+			DVec3d::From(0,0,-(uor_m_height - uor_m_topBoardThickness - uor_m_chamferWidth)),
+			DVec3d::From(0,-uor_m_supportWidth) };
+	bvector<DPoint3d> pts = { DPoint3d() };
+	for (size_t i = 0; i < dvecVec.size(); i++)
+		pts.push_back(pts.back() + dvecVec[i]);
+	pts.push_back(DPoint3d());
+	CurveVectorPtr profile = CurveVector::CreateLinear(pts, CurveVector::BOUNDARY_TYPE_Inner, true);
+
+	ISolidPrimitivePtr bridgeSolidPtr = ISolidPrimitive::CreateDgnExtrusion(DgnExtrusionDetail(profile, DVec3d::From(uor_m_length, 0), true));
+	if (SUCCESS != DraftingElementSchema::ToElement(eeh, *bridgeSolidPtr, nullptr, model))
+		return ERROR;
+
+	return SUCCESS;
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BM = Bentley.MstnPlatformNET;
 
 namespace PDIWT.Waterway.Lock.UI
 {
@@ -20,10 +21,15 @@ namespace PDIWT.Waterway.Lock.UI
     /// </summary>
     public partial class GuidewallP2View : UserControl
     {
-        public GuidewallP2View()
+        public GuidewallP2View(BM.AddIn addIn)
         {
             InitializeComponent();
-            DataContext = new ViewModel.GuidewallP2ViewModel();
+            DataContext = new ViewModel.GuidewallP2ViewModel(addIn);
+        }
+
+        public ViewModel.GuidewallP2Data GetData()
+        {
+            return ((ViewModel.GuidewallP2ViewModel)DataContext).SelectedData;
         }
     }
 }

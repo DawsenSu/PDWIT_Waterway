@@ -33,7 +33,7 @@ struct GuideWallP2Data : IParametersValidate
 		BE_DATA_VALUE(double, cushionThickness)
 
 		//wall
-		BE_DATA_VALUE(double, wallTopElevation)
+		//BE_DATA_VALUE(double, wallTopElevation)
 		BE_DATA_VALUE(double, wallBottomElevation)
 		BE_DATA_VALUE(double, wallThickness)
 		BE_DATA_VALUE(double, wallLength)
@@ -62,8 +62,9 @@ class GuidewallP2
 {
 private:
 	double gapWidth = 0.02; // unit: m
-	double bridgeHeigth = 0.57; //m
+	//double bridgeHeigth = 0.57; //m
 	double cushionExtraLength = 0.1; //m
+	double bridgePavementThickness = 0.06;
 
 	GuideWallP2Data			m_data;
 
@@ -72,7 +73,8 @@ private:
 	Pile				m_pile;
 	Cushion				m_cushion;
 	Wall				m_wall;
-
+	Bridge				m_bridge;
+	Cushion				m_bridgeCushion;
 
 	BentleyStatus		InitializeComponents();
 public:

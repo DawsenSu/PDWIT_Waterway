@@ -1,0 +1,17 @@
+﻿<Window
+    x:Class="PDIWT.Waterway.Lock.UI.IllustrationWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:PDIWT.Waterway.Lock.UI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="参数模型示意"
+    Width="800"
+    Height="450"
+    Background="AliceBlue"
+    mc:Ignorable="d">
+    <Image
+        Margin="3"
+        Source="Images/GuidewallP2.png"
+        Stretch="Fill" />
+</Window>

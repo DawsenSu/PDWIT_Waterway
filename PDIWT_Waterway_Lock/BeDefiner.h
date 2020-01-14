@@ -6,9 +6,6 @@
 |
 +---------------------------------------------------------------------------------------*/
 #pragma once
-
-#pragma once
-
 #ifndef BRIDGE_REBAR_BEDEFINER_H
 #define BRIDGE_REBAR_BEDEFINER_H
 //

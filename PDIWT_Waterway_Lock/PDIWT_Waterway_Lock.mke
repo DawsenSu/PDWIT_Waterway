@@ -54,7 +54,10 @@ CCompDebugOptions = $(CCompDebugOffSwitch)
 
 CCompDebugOptions =% $[CCompDebugDefault]
 
-CCompOpts + -AI$(MS)Assemblies -AI$(MS)Assemblies/ECFramework -AI$(MS) -AI$(o) -AI$(MS)Mdlapps
+CCompOpts + -AI$(MS)Assemblies -AI$(MS)Assemblies/ECFramework -AI$(MS) -AI$(o) \
+			-AI$(MS)Mdlapps -AI"D:/softwarefile/Bentley/Microstation/Configuration/Organization/Mdlapps" \
+#			-AI" C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1" \
+#			-AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.6"
 
 dirToSearch = ${msPrivInc}
 

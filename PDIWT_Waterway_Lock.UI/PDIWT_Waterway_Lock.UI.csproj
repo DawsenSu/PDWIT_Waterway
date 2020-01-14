@@ -202,6 +202,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="IllustrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GuidewallP2View.xaml.cs">
@@ -212,6 +216,9 @@
     </Compile>
     <Compile Include="GuidewallP2WinForm.Designer.cs">
       <DependentUpon>GuidewallP2WinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IllustrationWindow.xaml.cs">
+      <DependentUpon>IllustrationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -243,6 +250,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\GuidewallP2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GuidewallP2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

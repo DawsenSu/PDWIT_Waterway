@@ -34,6 +34,11 @@
 #using <Bentley.MicroStation.WPF.dll>
 #using <Bentley.UI.dll>
 #using <Bentley.Windowing.dll>
+
+#using "mscorlib.dll"
+#using <GalaSoft.MvvmLight.dll>
+#using <GalaSoft.MvvmLight.Extras.dll>
+#using <GalaSoft.MvvmLight.Platform.dll>
 #using <PDIWT_Waterway_Lock.UI.dll>
 
 USING_NAMESPACE_BENTLEY
@@ -50,7 +55,8 @@ using namespace System;
 using namespace System::Reflection;
 using namespace System::ComponentModel;
 using namespace System::Collections;
-using namespace System::Windows::Forms;
+//using namespace System::Windows::Forms;
+using namespace System::Windows::Controls;
 using namespace System::Data;
 using namespace System::Drawing;
 using namespace System::Runtime::InteropServices;
@@ -61,3 +67,4 @@ namespace BDE = Bentley::DgnPlatformNET::Elements;
 namespace BM = Bentley::MstnPlatformNET;
 namespace BMW = Bentley::MstnPlatformNET::WinForms;
 namespace BMWPF = Bentley::MstnPlatformNET::WPF;
+
