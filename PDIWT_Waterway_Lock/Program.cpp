@@ -7,8 +7,7 @@ void PDIWT::Waterway::Lock::KeyinCommands::CreateDolphinP1(System::String^ unpar
 
 void PDIWT::Waterway::Lock::KeyinCommands::CreateDolphinP11(System::String^ unparsed)
 {
-	mdlOutput_message(L"CreateDolphinP11");
-
+	DolphinP11Tool::InstallNewInstance();
 }
 
 void PDIWT::Waterway::Lock::KeyinCommands::CreateGuidewallP2(System::String^ unparsed)

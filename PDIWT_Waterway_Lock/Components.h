@@ -49,8 +49,75 @@ public:
 class DolphinColumnP1_P11 : IParametersValidate
 {
 private:
-
+	BE_DATA_VALUE(double, SaftyHeight)
+		BE_DATA_VALUE(double, DolphinColumnTopElevation)
+		BE_DATA_VALUE(double, DolphinColumnBottomElevation)
+		BE_DATA_VALUE(double, DolphinColumnTopLength)
+		BE_DATA_VALUE(double, DolphinColumnTopWidth)
+		BE_DATA_VALUE(double, DolphinColumnTopEdgeRadius)
+		BE_DATA_VALUE(double, DolphinColumnSideEdgeRadius)
+		BE_DATA_VALUE(double, DolphinColumnBottomLength)
+		BE_DATA_VALUE(double, DolphinColumnBottomWidth)
+		BE_DATA_VALUE(double, DolphinColumnHaunchHeight)
+		BE_DATA_VALUE(double, DolphinColumnHaunchLength)
+		BE_DATA_VALUE(double, AngleOfFirstPolylineWall)//실똑
+		BE_DATA_VALUE(double, HeightOfFirstPolylineWall)
+		BE_DATA_VALUE(double, AngleOfSecondPolylineWall)//실똑
+		BE_DATA_VALUE(double, HeightOfSecondPolylineWall)
+		BE_DATA_VALUE(double, CushionCapTopElevation)
 public:
+	DolphinColumnP1_P11()
+		:m_SaftyHeight(0.0)
+		, m_DolphinColumnTopElevation(0.0)
+		, m_DolphinColumnBottomElevation(0.0)
+		, m_DolphinColumnTopLength(0.0)
+		, m_DolphinColumnTopWidth(0.0)
+		, m_DolphinColumnTopEdgeRadius(0.0)
+		, m_DolphinColumnSideEdgeRadius(0.0)
+		, m_DolphinColumnBottomLength(0.0)
+		, m_DolphinColumnBottomWidth(0.0)
+		, m_DolphinColumnHaunchHeight(0.0)
+		, m_DolphinColumnHaunchLength(0.0)
+		, m_AngleOfFirstPolylineWall(0.0)
+		, m_HeightOfFirstPolylineWall(0.0)
+		, m_AngleOfSecondPolylineWall(0.0)
+		, m_HeightOfSecondPolylineWall(0.0)
+		, m_CushionCapTopElevation(0.0)
+	{}
+	DolphinColumnP1_P11(
+		double SaftyHeight,
+		double DolphinColumnTopElevation,
+		double DolphinColumnBottomElevation,
+		double DolphinColumnTopLength,
+		double DolphinColumnTopWidth,
+		double DolphinColumnTopEdgeRadius,
+		double DolphinColumnSideEdgeRadius,
+		double DolphinColumnBottomLength,
+		double DolphinColumnBottomWidth,
+		double DolphinColumnHaunchHeight,
+		double DolphinColumnHaunchLength,
+		double AngleOfFirstPolylineWall,
+		double HeightOfFirstPolylineWall,
+		double AngleOfSecondPolylineWall,
+		double HeightOfSecondPolylineWall,
+		double CushionCapTopElevation)
+		:m_SaftyHeight(SaftyHeight)
+		, m_DolphinColumnTopElevation(DolphinColumnTopElevation)
+		, m_DolphinColumnBottomElevation(DolphinColumnBottomElevation)
+		, m_DolphinColumnTopLength(DolphinColumnTopLength)
+		, m_DolphinColumnTopWidth(DolphinColumnTopWidth)
+		, m_DolphinColumnTopEdgeRadius(DolphinColumnTopEdgeRadius)
+		, m_DolphinColumnSideEdgeRadius(DolphinColumnSideEdgeRadius)
+		, m_DolphinColumnBottomLength(DolphinColumnBottomLength)
+		, m_DolphinColumnBottomWidth(DolphinColumnBottomWidth)
+		, m_DolphinColumnHaunchHeight(DolphinColumnHaunchHeight)
+		, m_DolphinColumnHaunchLength(DolphinColumnHaunchLength)
+		, m_AngleOfFirstPolylineWall(AngleOfFirstPolylineWall)
+		, m_HeightOfFirstPolylineWall(HeightOfFirstPolylineWall)
+		, m_AngleOfSecondPolylineWall(AngleOfSecondPolylineWall)
+		, m_HeightOfSecondPolylineWall(HeightOfSecondPolylineWall)
+		, m_CushionCapTopElevation(CushionCapTopElevation)
+	{}
 	bool ValidateParameters() override;
 	BentleyStatus CreateDolphin(EditElementHandleR eeh, DgnModelRefR model);
 };

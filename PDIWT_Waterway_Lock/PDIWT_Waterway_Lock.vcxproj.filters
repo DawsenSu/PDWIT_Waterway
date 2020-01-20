@@ -33,6 +33,12 @@
     <ClInclude Include="Components.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DolphinP11.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DolphinP11Tool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -48,6 +54,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Components.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DolphinP11.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DolphinP11Tool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

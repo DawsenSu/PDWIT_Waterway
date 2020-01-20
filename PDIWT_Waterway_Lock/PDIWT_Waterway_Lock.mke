@@ -35,6 +35,8 @@ objList = $(o)Program$(oext) \
           $(o)Components$(oext) \
 		  $(o)GuidewallP2$(oext) \
           $(o)GuidewallP2Tool$(oext) \
+		  $(o)DolphinP11$(oext) \
+          $(o)DolphinP11Tool$(oext) \
 #          $(o)DimByElementTool$(oext) \
 #          $(o)ElevationNoteToolWinForm$(oext) \
 #          $(o)ElevationNoteTool$(oext) \
@@ -68,6 +70,10 @@ $(o)Components$(oext) : $(baseDir)Components.cpp
 $(o)GuidewallP2$(oext) : $(baseDir)GuidewallP2.cpp
 
 $(o)GuidewallP2Tool$(oext) : $(baseDir)GuidewallP2Tool.cpp
+
+$(o)DolphinP11$(oext) : $(baseDir)DolphinP11.cpp
+
+$(o)DolphinP11Tool$(oext) : $(baseDir)DolphinP11Tool.cpp
 
 #$(o)GuidewallP2WinForm$(oext) : $(baseDir)GuidewallP2WinForm.cpp GuidewallP2WinForm.resx
 #
