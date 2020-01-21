@@ -1,4 +1,6 @@
 #pragma once
+#ifndef stdafx_h__
+#define stdafx_h__
 
 #pragma managed(push, off)
 #define winNT	1
@@ -47,9 +49,13 @@ USING_NAMESPACE_BENTLEY_MSTNPLATFORM
 USING_NAMESPACE_BENTLEY_MSTNPLATFORM_ELEMENT
 USING_NAMESPACE_BENTLEY_ECOBJECT
 
-#define PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN	namespace PDIWT { namespace Waterway { namespace Lock {
+#define PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN	namespace PDIWT { namespace Waterway { namespace Lock {
 #define PDIWT_WATERWAY_LOCK_NAMESPACE_END }}}
 #define	USING_NAMESPACE_PDIWT_WATERWAY_LOCK using namespace PDIWT::Waterway::Lock;
+
+#define PDIWT_NAMESPACE_BEGIN namespace PDIWT {
+#define PDIWT_NAMESPACE_END	}
+#define USING_NAMESPACE_PDIWT using namespace PDIWT;
 
 using namespace System;
 using namespace System::Reflection;
@@ -67,4 +73,4 @@ namespace BDE = Bentley::DgnPlatformNET::Elements;
 namespace BM = Bentley::MstnPlatformNET;
 namespace BMW = Bentley::MstnPlatformNET::WinForms;
 namespace BMWPF = Bentley::MstnPlatformNET::WPF;
-
+#endif // stdafx_h__

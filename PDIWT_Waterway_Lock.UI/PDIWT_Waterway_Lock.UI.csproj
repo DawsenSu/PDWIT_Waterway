@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D4DA36F5-1BE2-4BD1-95C0-44650D6C236C}</ProjectGuid>
     <OutputType>library</OutputType>
-    <RootNamespace>PDIWT_Waterway_Lock.UI</RootNamespace>
+    <RootNamespace>PDIWT.Waterway.Lock.UI</RootNamespace>
     <AssemblyName>PDIWT_Waterway_Lock.UI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -206,8 +206,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PickupTemplateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Attributes.cs" />
+    <Compile Include="Common\ObjectCopier.cs" />
     <Compile Include="GuidewallP2View.xaml.cs">
       <DependentUpon>GuidewallP2View.xaml</DependentUpon>
     </Compile>
@@ -219,6 +225,10 @@
     </Compile>
     <Compile Include="IllustrationWindow.xaml.cs">
       <DependentUpon>IllustrationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GuidewallP2Data.cs" />
+    <Compile Include="PickupTemplateWindow.xaml.cs">
+      <DependentUpon>PickupTemplateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -233,7 +243,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ValidationRules\GuidewallP2DataValidationRule.cs" />
     <Compile Include="ViewModel\GuidewallP2ViewModel.cs" />
+    <Compile Include="ViewModel\PickupTemplateViewModel.cs" />
     <EmbeddedResource Include="GuidewallP2WinForm.resx">
       <DependentUpon>GuidewallP2WinForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,5 +266,6 @@
   <ItemGroup>
     <Resource Include="Images\GuidewallP2.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

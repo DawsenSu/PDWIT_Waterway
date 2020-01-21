@@ -33,6 +33,9 @@
     <ClInclude Include="Components.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ECHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -50,11 +53,15 @@
     <ClCompile Include="Components.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ECHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="PDIWT_Waterway_Lock.keyins" />
     <None Include="PDIWT_Waterway_Lock.mke" />
     <None Include="ClassDiagram.cd" />
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="profile drawing.png">

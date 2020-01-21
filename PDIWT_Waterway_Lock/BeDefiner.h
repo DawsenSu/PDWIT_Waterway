@@ -57,21 +57,20 @@
 //}
 //#define THE_CONST_OWNER_CLASS(A, B, MEMB) get_const_owner_class<A, B, offsetof(A, MEMB)>(this);
 
-
 // very magical in manipulating templates
 template <int v>
 struct Int2Class
 {
-    enum
-    {
-        type = v
-    };
+	enum
+	{
+		type = v
+	};
 };
 
 #define BE_DEFINE_SUFFIX_TYPEDEFS(type) \
       typedef type* type##P, &type##R; \
       typedef type const* type##CP; \
-      typedef type const& type##CR; 
+      typedef type const& type##CR;
 
 ///<
 #define BE_DATA_VALUE(type, var) \
@@ -205,6 +204,27 @@ public: \
 private: \
         type m_##var[ sz ]; \
 
+#define DECLARE_PROPERTY(type, var) \
+public: \
+	type Get##var() const; \
+	type &Pop##var(); \
+	void Set##var(type arg); \
+private: \
+	type m_##var;
+
+#define DEFINE_PROPERTY(ClassName, type, var) \
+		type ClassName##::Get##var() const \
+	{ \
+		return m_##var; \
+	} \
+	type & ClassName##::Pop##var() \
+	{ \
+		return m_##var; \
+	} \
+	void ClassName##::Set##var(type arg)\
+	{ \
+		m_##var = arg; \
+	} \
 
 ///>
 
@@ -224,7 +244,7 @@ private: \
 //    // keep this only as one argument default CTOR, otherwise compiler will get confused
 //	BeTypeUnion( T val = 0 )
 //	{
-//        InitArray(b);            
+//        InitArray(b);
 //        v = val;
 //	}
 //
@@ -233,7 +253,7 @@ private: \
 //    {
 //        InitArray(b, false);
 //        index %= Size();
-//        b[ index ] = val; 
+//        b[ index ] = val;
 //    }
 //
 //	int Size() const
@@ -354,7 +374,7 @@ private: \
 //    }
 //
 //    memset((TYPE*)ref, 0, sizeof(ref));
-//    
+//
 //    for (i = 0; i < num; i++)
 //    {
 //		CtorClass(*(ref + i));
@@ -405,8 +425,6 @@ private: \
 //    register intptr_t sz = _countof(src);
 //    CopyArray(dest, src, sz);
 //}
-
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // have a pure operation class of another baseclass
@@ -493,4 +511,3 @@ private: \
 //#define DEBUG_REBAR_THIS_FILE static const char *REBAR_THIS_FILE = __FILE__;
 
 #endif
-

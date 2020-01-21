@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClInclude Include="BeDefiner.h" />
     <ClInclude Include="Components.h" />
+    <ClInclude Include="ECHelper.h" />
     <ClInclude Include="GuidewallP2.h" />
     <ClInclude Include="GuidewallP2Tool.h" />
     <ClInclude Include="Program.h" />
@@ -138,6 +139,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Components.cpp" />
+    <ClCompile Include="ECHelper.cpp" />
     <ClCompile Include="GuidewallP2.cpp" />
     <ClCompile Include="GuidewallP2Tool.cpp" />
     <ClCompile Include="Program.cpp" />
@@ -154,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="cpp.hint" />
     <None Include="PDIWT_Waterway_Lock.keyins" />
     <None Include="PDIWT_Waterway_Lock.mke" />
   </ItemGroup>
