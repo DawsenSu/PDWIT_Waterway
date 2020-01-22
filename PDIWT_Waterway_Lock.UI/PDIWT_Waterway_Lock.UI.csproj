@@ -273,5 +273,8 @@
   <ItemGroup>
     <Resource Include="Images\DolphinP11.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DolphinP11.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

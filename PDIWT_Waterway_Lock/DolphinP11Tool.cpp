@@ -11,8 +11,8 @@ void PDIWT::Waterway::Lock::DolphinP11Tool::_OnPostInstall()
 	//m_form = gcnew UI::GuidewallP2WinForm();
 	//m_form->AttachToToolSettings(Program::Addin);
 	m_wpfform = gcnew BMWPF::ToolSettingsHost();
-	m_wpfform->Width = 400;
-	m_wpfform->Height = 250;
+	m_wpfform->Width = 300;
+	m_wpfform->Height = 480;
 	m_wpfform->Title = L"Dolphin P11 Create Tool";
 	//The following doesn't work, it can't let the tool window show what is set here.
 	//m_wpfform->Icon = gcnew BitmapImage(gcnew Uri(L"pack://application:,,,/PDIWT_Waterway_Lock.UI;component/Images/GuidewallP2.ico", UriKind::RelativeOrAbsolute));

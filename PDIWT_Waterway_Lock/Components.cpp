@@ -169,11 +169,13 @@ BentleyStatus PDIWT::Waterway::Lock::DolphinColumnP1_P11::CreateDolphin(EditElem
 	cv5->push_back(ICurvePrimitive::CreateArc(edgeCutArc1));
 	cv5->push_back(ICurvePrimitive::CreateLineString(ptsCv4, 2));
 	cv5->push_back(ICurvePrimitive::CreateArc(edgeCutArc2));
-	
+
+	//创建切割实体
 	ISolidKernelEntityPtr target2;
 	if (SUCCESS != SolidUtil::Create::BodyFromSweep(target2, *cv4, *cv5, model, false, false, false, NULL, 0, 0, NULL))
 		return ERROR;
 
+	//进行切割
 	if (SUCCESS == SolidUtil::Modify::BooleanSubtract(target,&target2,1))
 		SolidUtil::Convert::BodyToElement(eeh, *target, nullptr, model);
 

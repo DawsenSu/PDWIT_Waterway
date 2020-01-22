@@ -360,7 +360,7 @@ namespace PDIWT.Waterway.Lock.UI.ViewModel
                     m_backToeLength = value;
             }
         }
-        double m_cushionCapExtraWideLength = 0.1;
+        double m_cushionCapExtraWideLength = 1;
         [Category("承台")]
         [DisplayName("两侧超宽(m)")]
         [PropertyOrder(3)]

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PDIWT.Waterway.Lock.UI"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="400">
+             d:DesignHeight="800" d:DesignWidth="300">
     <UserControl.Resources>
         <Style x:Key="PropertyGridErrorStyle" TargetType="{x:Type xctk:PropertyGrid}">
             <Style.Triggers>
@@ -55,11 +55,11 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
-        </Grid.ColumnDefinitions>
-        <GroupBox Header="模板">
+        </Grid.ColumnDefinitions>-->
+        <!--<GroupBox Header="模板">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -77,11 +77,10 @@
                     Margin="2"
                     Content="从模板中删除" />
             </Grid>
-        </GroupBox>
+        </GroupBox>-->
         <xctk:PropertyGrid
             x:Name="InputPropertyGrid"
             Grid.Row="0"
-            Grid.Column="1"
             Margin="2"
             AutoGenerateProperties="True"
             SelectedObject="{Binding SelectedData, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}"
@@ -89,7 +88,7 @@
             ShowSortOptions="False"
             ShowSummary="False"
             ShowTitle="False"
-            Style="{StaticResource PropertyGridErrorStyle}" />
+            Style="{StaticResource PropertyGridErrorStyle}" Grid.ColumnSpan="2" />
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Button
                 Margin="10,2"
