@@ -32,10 +32,11 @@ always:
     ~mkdir $(o)
 
 objList = $(o)Program$(oext) \
-#          $(o)DimWithNoteTool$(oext) \
-#          $(o)DimWithNoteToolWinForm$(oext) \
-#          $(o)DimByElementTool$(oext) \
-#          $(o)ElevationNoteToolWinForm$(oext) \
+          $(o)Components$(oext) \
+		  $(o)GuidewallP2$(oext) \
+          $(o)GuidewallP2Tool$(oext) \
+          $(o)ECHelper$(oext) \
+          $(o)GuidewallPlacementTool$(oext) \
 #          $(o)ElevationNoteTool$(oext) \
 
 #----------------------------------------------------------------------
@@ -53,18 +54,25 @@ CCompDebugOptions = $(CCompDebugOffSwitch)
 
 CCompDebugOptions =% $[CCompDebugDefault]
 
-CCompOpts + -AI$(MS)Assemblies -AI$(MS)Assemblies/ECFramework -AI$(MS) -AI$(o)
+CCompOpts + -AI$(MS)Assemblies -AI$(MS)Assemblies/ECFramework -AI$(MS) -AI$(o) \
+			-AI$(MS)Mdlapps -AI"D:/softwarefile/Bentley/Microstation/Configuration/Organization/Mdlapps" \
+#			-AI" C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1" \
+#			-AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.6"
 
 dirToSearch = ${msPrivInc}
 
 $(o)Program$(oext) : $(baseDir)Program.cpp
-#
-#$(o)DimWithNoteTool$(oext) : $(baseDir)DimWithNoteTool.cpp
-#
-#$(o)DimWithNoteToolWinForm$(oext) : $(baseDir)DimWithNoteToolWinForm.cpp
-#
-#$(o)ElevationNoteToolWinForm$(oext) : $(baseDir)ElevationNoteToolWinForm.cpp
-#
+
+$(o)Components$(oext) : $(baseDir)Components.cpp
+
+$(o)GuidewallP2$(oext) : $(baseDir)GuidewallP2.cpp
+
+$(o)GuidewallP2Tool$(oext) : $(baseDir)GuidewallP2Tool.cpp
+
+$(o)ECHelper$(oext) : $(baseDir)ECHelper.cpp
+
+$(o)GuidewallPlacementTool$(oext) : $(baseDir)GuidewallPlacementTool.cpp
+
 #$(o)ElevationNoteTool$(oext) : $(baseDir)ElevationNoteTool.cpp
 #
 #$(o)DimByElementTool$(oext) : $(baseDir)DimByElementTool.cpp
@@ -86,8 +94,8 @@ DLM_NO_IMPLIB           = 1
 DLM_NO_SIGN = 1
 
 ASSEMBLY_VERSION        = 1.0.0.0
-ASSEMBLY_STRONGNAME     = 1
-ASSEMBLY_KEYFILE        = $(baseDir)$(appName).snk
+#ASSEMBLY_STRONGNAME     = 1
+#ASSEMBLY_KEYFILE        = $(baseDir)$(appName).snk
 ASSEMBLY_TITLE          = $(appName)
 ASSEMBLY_DESCRIPTION    = waterway solid creation assembly
 ASSEMBLY_PRODUCT_NAME   = $(appName)

@@ -75,11 +75,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Program Files\Bentley\MicroStationCONNECTSDK\include;</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;C:\Program Files\Bentley\MicroStationCONNECTSDK\library;C:\Program Files\Bentley\MicroStation CONNECT Edition\MicroStation\</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(MSINC);$(IncludePath)</IncludePath>
-    <LibraryPath>$(MSLIB);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Program Files\Bentley\MicroStationCONNECTSDK\include;</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;C:\Program Files\Bentley\MicroStationCONNECTSDK\library;C:\Program Files\Bentley\MicroStation CONNECT Edition\MicroStation;C:\Program Files\Bentley\MicroStation CONNECT Edition\MicroStation\Mdlapps;C:\Users\cuifeng\source\repos\afas2005\PDWIT_Waterway\packages\MvvmLightLibs.5.4.1.1\lib\net45</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -128,23 +130,48 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BeDefiner.h" />
+    <ClInclude Include="Components.h" />
+    <ClInclude Include="ECHelper.h" />
+    <ClInclude Include="GuidewallP2.h" />
+    <ClInclude Include="GuidewallP2Tool.h" />
+    <ClInclude Include="GuidewallPlacementTool.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Components.cpp" />
+    <ClCompile Include="ECHelper.cpp" />
+    <ClCompile Include="GuidewallP2.cpp" />
+    <ClCompile Include="GuidewallP2Tool.cpp" />
+    <ClCompile Include="GuidewallPlacementTool.cpp" />
     <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="cpp.hint" />
     <None Include="PDIWT_Waterway_Lock.keyins" />
     <None Include="PDIWT_Waterway_Lock.mke" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="profile drawing.png" />
+    <Image Include="topview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PDIWT_Waterway_Lock.UI\PDIWT_Waterway_Lock.UI.csproj">
+      <Project>{d4da36f5-1be2-4bd1-95c0-44650d6c236c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
