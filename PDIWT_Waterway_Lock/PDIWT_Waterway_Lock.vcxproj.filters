@@ -36,6 +36,9 @@
     <ClInclude Include="ECHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GuidewallPlacementTool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -54,6 +57,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ECHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GuidewallPlacementTool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

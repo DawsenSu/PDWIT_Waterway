@@ -36,7 +36,7 @@ objList = $(o)Program$(oext) \
 		  $(o)GuidewallP2$(oext) \
           $(o)GuidewallP2Tool$(oext) \
           $(o)ECHelper$(oext) \
-#          $(o)ElevationNoteToolWinForm$(oext) \
+          $(o)GuidewallPlacementTool$(oext) \
 #          $(o)ElevationNoteTool$(oext) \
 
 #----------------------------------------------------------------------
@@ -71,8 +71,8 @@ $(o)GuidewallP2Tool$(oext) : $(baseDir)GuidewallP2Tool.cpp
 
 $(o)ECHelper$(oext) : $(baseDir)ECHelper.cpp
 
-#$(o)ElevationNoteToolWinForm$(oext) : $(baseDir)ElevationNoteToolWinForm.cpp
-#
+$(o)GuidewallPlacementTool$(oext) : $(baseDir)GuidewallPlacementTool.cpp
+
 #$(o)ElevationNoteTool$(oext) : $(baseDir)ElevationNoteTool.cpp
 #
 #$(o)DimByElementTool$(oext) : $(baseDir)DimByElementTool.cpp

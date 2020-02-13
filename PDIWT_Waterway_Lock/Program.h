@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "GuidewallP2Tool.h"
+#include "GuidewallPlacementTool.h"
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
 //////////////////////////////////////////////////////////////////////////

@@ -198,6 +198,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DolphinGuidewallPlacementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GuidewallP2View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,6 +218,9 @@
   <ItemGroup>
     <Compile Include="Common\Attributes.cs" />
     <Compile Include="Common\ObjectCopier.cs" />
+    <Compile Include="DolphinGuidewallPlacementView.xaml.cs">
+      <DependentUpon>DolphinGuidewallPlacementView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GuidewallP2View.xaml.cs">
       <DependentUpon>GuidewallP2View.xaml</DependentUpon>
     </Compile>
@@ -226,6 +233,7 @@
     <Compile Include="IllustrationWindow.xaml.cs">
       <DependentUpon>IllustrationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\DolphinGuidewallPlacementData.cs" />
     <Compile Include="Model\GuidewallP2Data.cs" />
     <Compile Include="PickupTemplateWindow.xaml.cs">
       <DependentUpon>PickupTemplateWindow.xaml</DependentUpon>
@@ -244,6 +252,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ValidationRules\GuidewallP2DataValidationRule.cs" />
+    <Compile Include="ViewModel\DolphinGuidewallPlacementViewModel.cs" />
     <Compile Include="ViewModel\GuidewallP2ViewModel.cs" />
     <Compile Include="ViewModel\PickupTemplateViewModel.cs" />
     <EmbeddedResource Include="GuidewallP2WinForm.resx">

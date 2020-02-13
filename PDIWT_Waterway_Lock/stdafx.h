@@ -16,6 +16,7 @@
 #include <DgnPlatform/ISettings.h>
 #include <PSolid\PSolidCoreAPI.h>
 #include "BeDefiner.h"
+#include <iostream>
 
 #pragma managed(pop)
 #include <vcclr.h>

@@ -7,12 +7,15 @@ bool PDIWT::Waterway::Lock::GuidewallP2Tool::_OnInstall()
 
 void PDIWT::Waterway::Lock::GuidewallP2Tool::_OnPostInstall()
 {
+	//int horizontal = GetSystemMetrics(SM_CXSCREEN);
+	//int vertical = GetSystemMetrics(SM_CYSCREEN);
+	//mdlDialog_dmsgsPrint(WPrintfString(L"Screen horizontal pixel: %d, Vertical pixel: %d", horizontal, vertical).GetWCharCP());
 	//Attach new window to tool
 	//m_form = gcnew UI::GuidewallP2WinForm();
 	//m_form->AttachToToolSettings(Program::Addin);
 	m_wpfform = gcnew BMWPF::ToolSettingsHost();
-	m_wpfform->Width = 250;
-	m_wpfform->Height = 400;
+	m_wpfform->Width = 250 ;
+	m_wpfform->Height = 400 ;
 	m_wpfform->Title = L"Guide wall P2 Create Tool";
 	//The following doesn't work, it can't let the tool window show what is set here.
 	//System::Windows::WindowCollection^ window = m_wpfform->OwnedWindows;

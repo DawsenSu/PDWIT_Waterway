@@ -26,15 +26,15 @@ public:
 /* The interface for model component creation.
 /* Author: DawsenSu						2020/01/17
 /************************************************************************/
-class IModelComponent
+class ModelComponentBase
 {
 public:
 	virtual bool ValidateParameters() = 0;
-	virtual ~IModelComponent() = default;
+	virtual ~ModelComponentBase() = default;
 	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model) = 0;
-	BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, TransformCR transform);
-	BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, DPoint3dCR translation);
-	BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, RotMatrixCR rotMatrix);
+	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, TransformCR transform) final;
+	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, DPoint3dCR translation) final;
+	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, RotMatrixCR rotMatrix) final;
 };
 
 /************************************************************************/

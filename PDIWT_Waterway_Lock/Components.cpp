@@ -6,7 +6,7 @@ PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
 /* Implementation of IModelComponenet interface
 /* Author: DawsenSu						2020/01/17
 /************************************************************************/
-BentleyStatus IModelComponent::Create(EditElementHandleR eeh, DgnModelRefR model, TransformCR transform)
+BentleyStatus ModelComponentBase::Create(EditElementHandleR eeh, DgnModelRefR model, TransformCR transform)
 {
 	if (SUCCESS != Create(eeh, model))
 		return ERROR;
@@ -15,12 +15,12 @@ BentleyStatus IModelComponent::Create(EditElementHandleR eeh, DgnModelRefR model
 	return SUCCESS;
 }
 
-BentleyStatus IModelComponent::Create(EditElementHandleR eeh, DgnModelRefR model, DPoint3dCR translation)
+BentleyStatus ModelComponentBase::Create(EditElementHandleR eeh, DgnModelRefR model, DPoint3dCR translation)
 {
 	return Create(eeh, model, Transform::From(translation));
 }
 
-BentleyStatus IModelComponent::Create(EditElementHandleR eeh, DgnModelRefR model, RotMatrixCR rotMatrix)
+BentleyStatus ModelComponentBase::Create(EditElementHandleR eeh, DgnModelRefR model, RotMatrixCR rotMatrix)
 {
 	return Create(eeh, model, Transform::From(rotMatrix));
 }
@@ -31,8 +31,8 @@ BentleyStatus IModelComponent::Create(EditElementHandleR eeh, DgnModelRefR model
 /************************************************************************/
 
 /************************************************************************/
-/* Dolphin p2 implement                                                                 
-/* Author: DawsenSu						2020/01/20							
+/* Dolphin p2 implement
+/* Author: DawsenSu						2020/01/20
 /************************************************************************/
 bool PDIWT::Waterway::Lock::DolphinColumnP2::ValidateParameters()
 {
@@ -107,8 +107,8 @@ BentleyStatus PDIWT::Waterway::Lock::DolphinColumnP3::CreateDolphin(EditElementH
 #pragma endregion Others
 
 /************************************************************************/
-/* Cushioncap Implement                                                                 
-/* Author: DawsenSu						2020/01/20							
+/* Cushioncap Implement
+/* Author: DawsenSu						2020/01/20
 /************************************************************************/
 bool PDIWT::Waterway::Lock::Cushioncap::ValidateParameters()
 {
@@ -140,8 +140,8 @@ BentleyStatus PDIWT::Waterway::Lock::Cushioncap::CreateCushioncap(EditElementHan
 }
 
 /************************************************************************/
-/* Pile Implement                                                                 
-/* Author: DawsenSu						2020/01/20							
+/* Pile Implement
+/* Author: DawsenSu						2020/01/20
 /************************************************************************/
 bool PDIWT::Waterway::Lock::Pile::ValidateParameters()
 {
@@ -185,8 +185,8 @@ BentleyStatus PDIWT::Waterway::Lock::Pile::CreatePile(EditElementHandleR eeh, Dg
 }
 
 /************************************************************************/
-/* Cushion Implement                                                                 
-/* Author: DawsenSu						2020/01/20							
+/* Cushion Implement
+/* Author: DawsenSu						2020/01/20
 /************************************************************************/
 bool PDIWT::Waterway::Lock::Cushion::ValidateParameters()
 {
@@ -210,13 +210,13 @@ BentleyStatus PDIWT::Waterway::Lock::Cushion::CreateCushion(EditElementHandleR e
 	ISolidPrimitivePtr cushionSolidPtr = ISolidPrimitive::CreateDgnBox(cushionDetail);
 	if (SUCCESS != DraftingElementSchema::ToElement(eeh, *cushionSolidPtr, NULL, model))
 		return ERROR;
-	
+
 	return SUCCESS;
 }
 
 /************************************************************************/
-/* Wall Implement                                                                 
-/* Author: DawsenSu						2020/01/20							
+/* Wall Implement
+/* Author: DawsenSu						2020/01/20
 /************************************************************************/
 bool PDIWT::Waterway::Lock::Wall::ValidateParameters()
 {
@@ -245,8 +245,8 @@ BentleyStatus PDIWT::Waterway::Lock::Wall::CreateWall(EditElementHandleR eeh, Dg
 }
 
 /************************************************************************/
-/* Bridge Implement                                                                 
-/* Author: DawsenSu						2020/01/20							
+/* Bridge Implement
+/* Author: DawsenSu						2020/01/20
 /************************************************************************/
 bool PDIWT::Waterway::Lock::Bridge::ValidateParameters()
 {
