@@ -7,15 +7,11 @@ bool PDIWT::Waterway::Lock::DolphinP11Tool::_OnInstall()
 
 void PDIWT::Waterway::Lock::DolphinP11Tool::_OnPostInstall()
 {
-	//Attach new window to tool
-	//m_form = gcnew UI::GuidewallP2WinForm();
-	//m_form->AttachToToolSettings(Program::Addin);
 	m_wpfform = gcnew BMWPF::ToolSettingsHost();
 	m_wpfform->Width = 300;
 	m_wpfform->Height = 480;
 	m_wpfform->Title = L"Dolphin P11 Create Tool";
-	//The following doesn't work, it can't let the tool window show what is set here.
-	//m_wpfform->Icon = gcnew BitmapImage(gcnew Uri(L"pack://application:,,,/PDIWT_Waterway_Lock.UI;component/Images/GuidewallP2.ico", UriKind::RelativeOrAbsolute));
+
 	m_wpfform->Content = gcnew UI::DolphinP11View(Program::Addin);
 	m_wpfform->Attach(Program::Addin);
 
@@ -42,16 +38,15 @@ bool PDIWT::Waterway::Lock::DolphinP11Tool::_OnResetButton(DgnButtonEventCR ev)
 
 bool PDIWT::Waterway::Lock::DolphinP11Tool::_OnDataButton(DgnButtonEventCR ev)
 {
-	SetupForNextAction();
 	if (m_pts.empty())
 	{
 		// Set the data for the first click
 		SetData();
 
 		DPoint3d pt = *ev.GetPoint();
-		pt.z = m_data.GetDolphinColumnBottomElevation() * ACTIVEMODEL->GetModelInfoCP()->GetUorPerMeter();
+		pt.z = m_data->DolphinColumnBottomElevation * ACTIVEMODEL->GetModelInfoCP()->GetUorPerMeter();
 		m_pts.push_back(pt);
-
+		SetupForNextAction();
 		_BeginDynamics();
 		return false;
 	}
@@ -62,7 +57,14 @@ bool PDIWT::Waterway::Lock::DolphinP11Tool::_OnDataButton(DgnButtonEventCR ev)
 	EditElementHandle dolphinp11Eeh;
 	if (SUCCESS != dolphinp11.CreateDolphinP11(dolphinp11Eeh, *ACTIVEMODEL))
 	{
+		WString errorMsg;
+		if (m_data->DolphinColumnBottomElevation >= m_data->DolphinColumnTopElevation)
+			errorMsg += WPrintfString(L"Error -> Dolphin bottom elevation:[%0.2f] >= Dolphin top elevation:[%0.2f]\n", m_data->DolphinColumnBottomElevation, m_data->DolphinColumnTopElevation);
+		if (m_data->CushionCapBottomElevation >= m_data->DolphinColumnBottomElevation)
+			errorMsg += WPrintfString(L"Error -> Cushioncap bottom elevation:[%0.2f] >=  Dolphin bottom elevation:[%0.2f]\n", m_data->CushionCapBottomElevation, m_data->DolphinColumnBottomElevation);
+
 		mdlOutput_messageCenter(OutputMessagePriority::Error, L"Can't create dolphinP11", L"", OutputMessageAlert::Balloon);
+		m_pts.clear();
 		return false;
 	}
 	DVec3d rotVec = m_pts.at(1) - m_pts.at(0);
@@ -78,7 +80,8 @@ bool PDIWT::Waterway::Lock::DolphinP11Tool::_OnDataButton(DgnButtonEventCR ev)
 		return false;
 	}
 	dolphinp11Eeh.AddToModel();
-	CallOnRestartTool();
+	m_pts.clear();
+	SetupForNextAction();
 	return false;
 }
 
@@ -86,10 +89,10 @@ void PDIWT::Waterway::Lock::DolphinP11Tool::_OnDynamicFrame(DgnButtonEventCR ev)
 {
 	if (m_pts.empty())
 		return;
-	SetupForNextAction();
+
 	DolphinP11 dolphinp11(m_data);
 	EditElementHandle dolphinp11Eeh;
-	if (SUCCESS != dolphinp11.CreateDolphinP11(dolphinp11Eeh, *ACTIVEMODEL))
+	if (SUCCESS != dolphinp11.CreateDolphinP11(dolphinp11Eeh, *ACTIVEMODEL,true))
 		return;
 	DVec3d rotVec = *ev.GetPoint() - m_pts.at(0);
 	rotVec.z = 0;
@@ -142,25 +145,6 @@ void PDIWT::Waterway::Lock::DolphinP11Tool::InstallNewInstance()
 void PDIWT::Waterway::Lock::DolphinP11Tool::SetData()
 {
 	UI::DolphinP11View^ view = dynamic_cast<UI::DolphinP11View^>(m_wpfform->Content);
-
-	UI::ViewModel::DolphinP11Data^ data = view->GetData();
-	m_data.SetDolphinColumnTopElevation(data->DolphinColumnTopElevation);
-	m_data.SetDolphinColumnBottomElevation(data->DolphinColumnBottomElevation);
-	m_data.SetDolphinColumnTopLength(data->DolphinColumnTopLength);
-	m_data.SetDolphinColumnTopWidth(data->DolphinColumnTopWidth);
-	m_data.SetDolphinColumnTopEdgeRadius(data->DolphinColumnTopEdgeRadius);
-	m_data.SetDolphinColumnSideEdgeRadius(data->DolphinColumnSideEdgeRadius);
-	m_data.SetDolphinColumnBottomLength(data->DolphinColumnBottomLength);
-	m_data.SetDolphinColumnBottomWidth(data->DolphinColumnBottomWidth);
-	m_data.SetDolphinColumnHaunchHeight(data->DolphinColumnHaunchHeight);
-	m_data.SetDolphinColumnHaunchLength(data->DolphinColumnHaunchLength);
-	m_data.SetAngleOfFirstPolylineWall(data->AngleOfFirstPolylineWall);
-	m_data.SetHeightOfFirstPolylineWall(data->HeightOfFirstPolylineWall);
-
-	m_data.SetCushionCapBottomElevation(data->CushionCapBottomElevation);
-	m_data.SetFrontToeLength(data->FrontToeLength);
-	m_data.SetBackToeLength(data->BackToeLength);
-	m_data.SetCushionCapExtraWideLength(data->CushionCapExtraWideLength);
-	
-	m_data.SetCapThickness(data->CapThickness / 1000); //UI Unit: mm
+	UI::Model::DolphinP11Data^ data = view->GetData();
+	m_data = data->CloneDolphinP11DataInMeters();
 }

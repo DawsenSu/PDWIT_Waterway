@@ -1,72 +1,22 @@
 #pragma once
+#ifndef GuidewallP2_h__
+#define GuidewallP2_h__
+
 #include "stdafx.h"
 #include "Components.h"
+#include "ECHelper.h"
 
-PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN
-struct GuideWallP2Data : IParametersValidate
+PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
+
+class GuidewallP2
 {
-	// position information
-	//dolphin
-	BE_DATA_VALUE(double, dolphinTopElevation)
-		BE_DATA_VALUE(double, dolphinBottomElevation)
-		BE_DATA_VALUE(double, dolphinTopLength)
-		BE_DATA_VALUE(double, dolphinTopWidth)
-		BE_DATA_VALUE(double, dolphinBottomLength)
-		BE_DATA_VALUE(double, dolphinBottomWidth)
-
-		//cushioncap
-		BE_DATA_VALUE(double, cushioncapBottomElevation)
-		BE_DATA_VALUE(double, cushioncapFrontToeLength)
-		BE_DATA_VALUE(double, cushioncapRearToeLength)
-		BE_DATA_VALUE(double, cushioncapExtraSideLength)
-		BE_DATA_VALUE(double, cushioncapChamferLength)
-
-		// pile
-		BE_DATA_VALUE(double, pileTopElevation)
-		BE_DATA_VALUE(double, pileBottomElevation)
-		BE_DATA_VALUE(double, pileDiameter)
-		BE_DATA_VALUE(double, pilewallThickness)
-		//BE_DATA_VALUE(double, pileOffsetAlongRiver)
-		BE_DATA_VALUE(double, pileOffsetPerpendicularRiver)
-		
-		//cushion
-		BE_DATA_VALUE(double, cushionThickness)
-
-		//wall
-		//BE_DATA_VALUE(double, wallTopElevation)
-		BE_DATA_VALUE(double, wallBottomElevation)
-		BE_DATA_VALUE(double, wallThickness)
-		BE_DATA_VALUE(double, wallLength)
-		BE_DATA_VALUE(bool, hasLeftWall)
-		BE_DATA_VALUE(bool, hasRightWall)
-
-		//Bridge
-		BE_DATA_VALUE(double, bridgeLength)
-		BE_DATA_VALUE(double, bridgeHeight)
-		BE_DATA_VALUE(double, bridgeWidth)
-		BE_DATA_VALUE(double, bridgeTopBoardThickness)
-		BE_DATA_VALUE(double, bridgeSupportWidth)
-		BE_DATA_VALUE(double, bridgeChamferWidth)
 public:
-		virtual bool ValidateParameters() override;
-
-};
-
-//typedef RefCountedPtr<DolphinColumnP2> DolphinColumnP2Ptr;
-//typedef RefCountedPtr<Cushioncap> CushioncapPtr;
-//typedef RefCountedPtr<Pile> PilePtr;
-//typedef RefCountedPtr<Cushion> CushionPtr;
-//typedef RefCountedPtr<Wall> WallPtr;
-
-class GuidewallP2 
-{
+	static const double gapWidth; // unit: m
+	static const double cushionExtraLength; //m
+	static const double bridgePavementThickness;
+	static const WString componentName;
 private:
-	double gapWidth = 0.02; // unit: m
-	//double bridgeHeigth = 0.57; //m
-	double cushionExtraLength = 0.1; //m
-	double bridgePavementThickness = 0.06;
-
-	GuideWallP2Data			m_data;
+	gcroot<UI::Model::GuidewallP2Data^> m_data;
 
 	DolphinColumnP2		m_dolphin;
 	Cushioncap			m_cushioncap;
@@ -75,11 +25,12 @@ private:
 	Wall				m_wall;
 	Bridge				m_bridge;
 	Cushion				m_bridgeCushion;
-
 	BentleyStatus		InitializeComponents();
+
 public:
-	GuidewallP2(const GuideWallP2Data& data) : m_data(data) {  }
-	BentleyStatus		CreateGuidewallP2(EditElementHandleR eeh, DgnModelRefR model);
+	GuidewallP2(UI::Model::GuidewallP2Data^ data);
+	BentleyStatus		CreateGuidewallP2(EditElementHandleR eeh, DgnModelRefR model, bool isForDynamic = false);
 };
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_END
+#endif // GuidewallP2_h__

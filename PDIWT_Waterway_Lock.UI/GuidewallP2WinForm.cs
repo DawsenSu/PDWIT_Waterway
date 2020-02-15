@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace PDIWT.Waterway.Lock.UI
@@ -19,20 +12,20 @@ namespace PDIWT.Waterway.Lock.UI
             InitializeComponent();
 
             //dolphin
-            ToggleLabelForeColor(dolphinTopEleTextBox, new Label[]{ dolphinTopEleLabel, dolphinTopEleLabel2 });
-            ToggleLabelForeColor(dolphinBottomEleTextBox, new Label[]{ dolphinBottomEleLabel, dolphinBottomEleLabel2 });
-            ToggleLabelForeColor(dolphinTopLengthTextBox, new Label[]{ dolphinTopLengthLabel});
-            ToggleLabelForeColor(dolphinTopWidthTextBox, new Label[]{ dolphinTopWidthLabel, dolphinTopWidthLabel2 });
-            ToggleLabelForeColor(dolphinBottomLengthTextBox, new Label[]{ dolphinBottomLengthLabel});
-            ToggleLabelForeColor(dolphinBottomWidthTextBox, new Label[]{ dolphinBottomWidthLabel, dolphinBottomWidthLabel2});
+            ToggleLabelForeColor(dolphinTopEleTextBox, new Label[] { dolphinTopEleLabel, dolphinTopEleLabel2 });
+            ToggleLabelForeColor(dolphinBottomEleTextBox, new Label[] { dolphinBottomEleLabel, dolphinBottomEleLabel2 });
+            ToggleLabelForeColor(dolphinTopLengthTextBox, new Label[] { dolphinTopLengthLabel });
+            ToggleLabelForeColor(dolphinTopWidthTextBox, new Label[] { dolphinTopWidthLabel, dolphinTopWidthLabel2 });
+            ToggleLabelForeColor(dolphinBottomLengthTextBox, new Label[] { dolphinBottomLengthLabel });
+            ToggleLabelForeColor(dolphinBottomWidthTextBox, new Label[] { dolphinBottomWidthLabel, dolphinBottomWidthLabel2 });
             //cushioncap
             ToggleLabelForeColor(cushioncapBottomEleTextBox, new Label[] { cushioncapBottomEleLabel });
-            ToggleLabelForeColor(cushioncapFrontToeLengthTextBox, new Label[]{ cushioncapFrontToeLengthLabel, cushioncapFrontToeLengthLabel2});
-            ToggleLabelForeColor(cushioncapRearToeLengthTextBox, new Label[]{ cushioncapRearToeLengthLabel, cushioncapRearToeLengthLabel2});
-            ToggleLabelForeColor(cushioncapExtraSideLengthTextBox, new Label[]{ cushioncapExtraSideLengthLabel});
-            ToggleLabelForeColor(cushioncapFrontChamferLengthTextBox, new Label[]{ cushioncapFrontChamferLengthLabel});
+            ToggleLabelForeColor(cushioncapFrontToeLengthTextBox, new Label[] { cushioncapFrontToeLengthLabel, cushioncapFrontToeLengthLabel2 });
+            ToggleLabelForeColor(cushioncapRearToeLengthTextBox, new Label[] { cushioncapRearToeLengthLabel, cushioncapRearToeLengthLabel2 });
+            ToggleLabelForeColor(cushioncapExtraSideLengthTextBox, new Label[] { cushioncapExtraSideLengthLabel });
+            ToggleLabelForeColor(cushioncapFrontChamferLengthTextBox, new Label[] { cushioncapFrontChamferLengthLabel });
             //pile
-            ToggleLabelForeColor(pileTopEleTextBox, new Label[]{ pileTopEleLabel});
+            ToggleLabelForeColor(pileTopEleTextBox, new Label[] { pileTopEleLabel });
             ToggleLabelForeColor(pileBottomEleTextBox, new Label[] { pileBottomEleLabel });
             //cushion
             ToggleLabelForeColor(cushionThicknesTextBox, new Label[] { cushionThicknessLabel });
@@ -42,7 +35,6 @@ namespace PDIWT.Waterway.Lock.UI
             ToggleLabelForeColor(wallThicknessTextBox, new Label[] { wallThicknessLabel });
             ToggleLabelForeColor(wallLengthTextBox, new Label[] { wallLengthLabel });
             //Fender
-            
         }
 
         private Color highlightColor = Color.Red;
@@ -65,6 +57,5 @@ namespace PDIWT.Waterway.Lock.UI
                 }
             };
         }
-
     }
 }

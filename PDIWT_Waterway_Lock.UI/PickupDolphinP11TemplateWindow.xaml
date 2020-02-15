@@ -1,0 +1,72 @@
+﻿<Window
+    x:Class="PDIWT.Waterway.Lock.UI.PickupDolphinP11TemplateWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:PDIWT.Waterway.Lock.UI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="从模板中选择"
+    Width="230"
+    Height="380"
+    ResizeMode="NoResize"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <cmd:EventToCommand Command="{Binding WindowClosed}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <GroupBox Header="模板">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <ListBox ItemsSource="{Binding Datas}" SelectedItem="{Binding SelectedData}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type ListBoxItem}">
+                        <Border
+                            BorderBrush="LightYellow"
+                            BorderThickness="1"
+                            CornerRadius="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="模板名称：" />
+                                <TextBox Grid.Column="1" Text="{Binding Name}" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button
+                Grid.Row="1"
+                Margin="2"
+                Command="{Binding SelecteTempalte}"
+                Content="选择模板" />
+            <Button
+                Grid.Row="2"
+                Margin="2"
+                Command="{Binding AddToTemplates}"
+                Content="添加当前参数至模板中" />
+            <Button
+                Grid.Row="3"
+                Margin="2"
+                Command="{Binding DeteleFromTemplates}"
+                Content="从模板中删除当前所选" />
+            <Button
+                Grid.Row="4"
+                Margin="2"
+                Command="{Binding SaveAndExit}"
+                Content="保存并退出"
+                FontWeight="Bold"
+                Foreground="Red" />
+        </Grid>
+    </GroupBox>
+</Window>

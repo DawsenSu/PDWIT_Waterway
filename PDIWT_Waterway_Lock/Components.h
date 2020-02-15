@@ -1,7 +1,10 @@
 #pragma once
-#include "stdafx.h"
+#ifndef Components_h__
+#define Components_h__
 
-PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN
+#include "stdafx.h"
+#include "ECHelper.h"
+PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
 
 //////////////////////////////////////////////////////////////////////////
 //
@@ -18,6 +21,21 @@ class IParametersValidate {
 public:
 	virtual bool ValidateParameters() = 0;
 	virtual ~IParametersValidate() = default;
+};
+
+/************************************************************************/
+/* The interface for model component creation.
+/* Author: DawsenSu						2020/01/17
+/************************************************************************/
+class ModelComponentBase
+{
+public:
+	virtual bool ValidateParameters() = 0;
+	virtual ~ModelComponentBase() = default;
+	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model) = 0;
+	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, TransformCR transform) final;
+	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, DPoint3dCR translation) final;
+	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, RotMatrixCR rotMatrix) final;
 };
 
 // Su
@@ -49,7 +67,6 @@ public:
 class DolphinColumnP1_P11 : IParametersValidate
 {
 private:
-	BE_DATA_VALUE(double, SaftyHeight)
 		BE_DATA_VALUE(double, DolphinColumnTopElevation)
 		BE_DATA_VALUE(double, DolphinColumnBottomElevation)
 		BE_DATA_VALUE(double, DolphinColumnTopLength)
@@ -62,13 +79,10 @@ private:
 		BE_DATA_VALUE(double, DolphinColumnHaunchLength)
 		BE_DATA_VALUE(double, AngleOfFirstPolylineWall)//실똑
 		BE_DATA_VALUE(double, HeightOfFirstPolylineWall)
-		BE_DATA_VALUE(double, AngleOfSecondPolylineWall)//실똑
-		BE_DATA_VALUE(double, HeightOfSecondPolylineWall)
 		BE_DATA_VALUE(double, CushionCapTopElevation)
 public:
 	DolphinColumnP1_P11()
-		:m_SaftyHeight(0.0)
-		, m_DolphinColumnTopElevation(0.0)
+		:m_DolphinColumnTopElevation(0.0)
 		, m_DolphinColumnBottomElevation(0.0)
 		, m_DolphinColumnTopLength(0.0)
 		, m_DolphinColumnTopWidth(0.0)
@@ -80,12 +94,9 @@ public:
 		, m_DolphinColumnHaunchLength(0.0)
 		, m_AngleOfFirstPolylineWall(0.0)
 		, m_HeightOfFirstPolylineWall(0.0)
-		, m_AngleOfSecondPolylineWall(0.0)
-		, m_HeightOfSecondPolylineWall(0.0)
 		, m_CushionCapTopElevation(0.0)
 	{}
 	DolphinColumnP1_P11(
-		double SaftyHeight,
 		double DolphinColumnTopElevation,
 		double DolphinColumnBottomElevation,
 		double DolphinColumnTopLength,
@@ -98,11 +109,8 @@ public:
 		double DolphinColumnHaunchLength,
 		double AngleOfFirstPolylineWall,
 		double HeightOfFirstPolylineWall,
-		double AngleOfSecondPolylineWall,
-		double HeightOfSecondPolylineWall,
 		double CushionCapTopElevation)
-		:m_SaftyHeight(SaftyHeight)
-		, m_DolphinColumnTopElevation(DolphinColumnTopElevation)
+		: m_DolphinColumnTopElevation(DolphinColumnTopElevation)
 		, m_DolphinColumnBottomElevation(DolphinColumnBottomElevation)
 		, m_DolphinColumnTopLength(DolphinColumnTopLength)
 		, m_DolphinColumnTopWidth(DolphinColumnTopWidth)
@@ -114,8 +122,6 @@ public:
 		, m_DolphinColumnHaunchLength(DolphinColumnHaunchLength)
 		, m_AngleOfFirstPolylineWall(AngleOfFirstPolylineWall)
 		, m_HeightOfFirstPolylineWall(HeightOfFirstPolylineWall)
-		, m_AngleOfSecondPolylineWall(AngleOfSecondPolylineWall)
-		, m_HeightOfSecondPolylineWall(HeightOfSecondPolylineWall)
 		, m_CushionCapTopElevation(CushionCapTopElevation)
 	{}
 	bool ValidateParameters() override;
@@ -217,16 +223,6 @@ public :
 	BentleyStatus CreateBridge(EditElementHandleR eeh, DgnModelRefR model);
 	
 };
-// su
-//class Fender : IParametersValidate
-//{
-//	//fender
-//	BE_DATA_VALUE(double, fenderTopElevation)
-//		BE_DATA_VALUE(double, fenderBottomElevation)
-//		BE_DATA_VALUE(double, fenderThickness)
-//public:
-//	bool ValidateParameters() override;
-//};
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_END
-
+#endif // Components_h__

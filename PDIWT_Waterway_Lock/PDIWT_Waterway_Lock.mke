@@ -37,9 +37,8 @@ objList = $(o)Program$(oext) \
           $(o)GuidewallP2Tool$(oext) \
 		  $(o)DolphinP11$(oext) \
           $(o)DolphinP11Tool$(oext) \
-#          $(o)DimByElementTool$(oext) \
-#          $(o)ElevationNoteToolWinForm$(oext) \
-#          $(o)ElevationNoteTool$(oext) \
+          $(o)ECHelper$(oext) \
+          $(o)GuidewallPlacementTool$(oext) \
 
 #----------------------------------------------------------------------
 # Create the command table include file.
@@ -57,7 +56,7 @@ CCompDebugOptions = $(CCompDebugOffSwitch)
 CCompDebugOptions =% $[CCompDebugDefault]
 
 CCompOpts + -AI$(MS)Assemblies -AI$(MS)Assemblies/ECFramework -AI$(MS) -AI$(o) \
-			-AI$(MS)Mdlapps -AI"D:/softwarefile/Bentley/Microstation/Configuration/Organization/Mdlapps" \
+			-AI$(MS)Mdlapps -AI"C:/ProgramData/Bentley/MicroStation CONNECT Edition/Configuration/Organization/Mdlapps" \
 #			-AI" C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1" \
 #			-AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.6"
 
@@ -74,6 +73,10 @@ $(o)GuidewallP2Tool$(oext) : $(baseDir)GuidewallP2Tool.cpp
 $(o)DolphinP11$(oext) : $(baseDir)DolphinP11.cpp
 
 $(o)DolphinP11Tool$(oext) : $(baseDir)DolphinP11Tool.cpp
+
+$(o)ECHelper$(oext) : $(baseDir)ECHelper.cpp
+
+$(o)GuidewallPlacementTool$(oext) : $(baseDir)GuidewallPlacementTool.cpp
 
 #$(o)GuidewallP2WinForm$(oext) : $(baseDir)GuidewallP2WinForm.cpp GuidewallP2WinForm.resx
 #

@@ -134,8 +134,10 @@
     <ClInclude Include="Components.h" />
     <ClInclude Include="DolphinP11.h" />
     <ClInclude Include="DolphinP11Tool.h" />
+    <ClInclude Include="ECHelper.h" />
     <ClInclude Include="GuidewallP2.h" />
     <ClInclude Include="GuidewallP2Tool.h" />
+    <ClInclude Include="GuidewallPlacementTool.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
@@ -146,6 +148,7 @@
     <ClCompile Include="DolphinP11Tool.cpp" />
     <ClCompile Include="GuidewallP2.cpp" />
     <ClCompile Include="GuidewallP2Tool.cpp" />
+    <ClCompile Include="GuidewallPlacementTool.cpp" />
     <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <ItemGroup>

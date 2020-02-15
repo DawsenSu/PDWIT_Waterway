@@ -1,5 +1,35 @@
 #include "Components.h"
 
+PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
+
+/************************************************************************/
+/* Implementation of IModelComponenet interface
+/* Author: DawsenSu						2020/01/17
+/************************************************************************/
+BentleyStatus ModelComponentBase::Create(EditElementHandleR eeh, DgnModelRefR model, TransformCR transform)
+{
+	if (SUCCESS != Create(eeh, model))
+		return ERROR;
+	if (SUCCESS != eeh.GetHandler().ApplyTransform(eeh, TransformInfo(transform)))
+		return ERROR;
+	return SUCCESS;
+}
+
+BentleyStatus ModelComponentBase::Create(EditElementHandleR eeh, DgnModelRefR model, DPoint3dCR translation)
+{
+	return Create(eeh, model, Transform::From(translation));
+}
+
+BentleyStatus ModelComponentBase::Create(EditElementHandleR eeh, DgnModelRefR model, RotMatrixCR rotMatrix)
+{
+	return Create(eeh, model, Transform::From(rotMatrix));
+}
+
+/************************************************************************/
+/* Implementation of individual component.
+/* Author: DawsenSu						2020/01/17
+/************************************************************************/
+
 bool PDIWT::Waterway::Lock::DolphinColumnP2::ValidateParameters()
 {
 	if (m_dolphinTopWidth <= 0 || m_dolphinTopLength <= 0 || m_dolphinBottomWidth <= 0 || m_dolphinBottomLength <= 0
@@ -37,13 +67,13 @@ BentleyStatus PDIWT::Waterway::Lock::DolphinColumnP2::CrerateDolphin(EditElement
 	ISolidPrimitivePtr subtractbodyPtr = ISolidPrimitive::CreateDgnBox(subtractbodyDetail);
 
 	ISolidKernelEntityPtr mainbodyEntityPtr, subtractbodyEntityPtr;
-	if (ERROR == SolidUtil::Create::BodyFromSolidPrimitive(mainbodyEntityPtr, *mainbodyPtr, model))
+	if (SUCCESS != SolidUtil::Create::BodyFromSolidPrimitive(mainbodyEntityPtr, *mainbodyPtr, model))
 		return ERROR;
-	if (ERROR == SolidUtil::Create::BodyFromSolidPrimitive(subtractbodyEntityPtr, *subtractbodyPtr, model))
+	if (SUCCESS != SolidUtil::Create::BodyFromSolidPrimitive(subtractbodyEntityPtr, *subtractbodyPtr, model))
 		return ERROR;
-	if (ERROR == SolidUtil::Modify::BooleanSubtract(mainbodyEntityPtr, &subtractbodyEntityPtr, 1))
+	if (SUCCESS != SolidUtil::Modify::BooleanSubtract(mainbodyEntityPtr, &subtractbodyEntityPtr, 1))
 		return ERROR;
-	if (ERROR == DraftingElementSchema::ToElement(eeh, *mainbodyEntityPtr, nullptr, model))
+	if (SUCCESS != DraftingElementSchema::ToElement(eeh, *mainbodyEntityPtr, nullptr, model))
 		return ERROR;
 	return SUCCESS;
 }
@@ -217,7 +247,7 @@ BentleyStatus PDIWT::Waterway::Lock::Cushioncap::CreateCushioncap(EditElementHan
 			uor_m_cushioncapLength, uor_m_cushioncapBottomWidth,
 			uor_m_cushioncapLength, uor_m_cushioncapTopWidth, true);
 	ISolidPrimitivePtr cushioncapSolidPtr = ISolidPrimitive::CreateDgnBox(cushioncapDetail);
-	if (ERROR == DraftingElementSchema::ToElement(eeh, *cushioncapSolidPtr, nullptr, model))
+	if (SUCCESS != DraftingElementSchema::ToElement(eeh, *cushioncapSolidPtr, nullptr, model))
 		return ERROR;
 	return SUCCESS;
 }
@@ -249,13 +279,13 @@ BentleyStatus PDIWT::Waterway::Lock::Pile::CreatePile(EditElementHandleR eeh, Dg
 	DgnConeDetail innerCylinder = DgnConeDetail(topCenter, bottomCenter, uorDiameter / 2 - uorThickness, uorDiameter / 2 - uorThickness, true);
 	ISolidPrimitivePtr innerCylinderPtr = ISolidPrimitive::CreateDgnCone(innerCylinder);
 	ISolidKernelEntityPtr outerCylinderEntityPtr, innerCylinderEntityPtr;
-	if (ERROR == SolidUtil::Create::BodyFromSolidPrimitive(outerCylinderEntityPtr, *outerCylinderPtr, model))
+	if (SUCCESS != SolidUtil::Create::BodyFromSolidPrimitive(outerCylinderEntityPtr, *outerCylinderPtr, model))
 		return ERROR;
-	if (ERROR == SolidUtil::Create::BodyFromSolidPrimitive(innerCylinderEntityPtr, *innerCylinderPtr, model))
+	if (SUCCESS != SolidUtil::Create::BodyFromSolidPrimitive(innerCylinderEntityPtr, *innerCylinderPtr, model))
 		return ERROR;
-	if (ERROR == SolidUtil::Modify::BooleanSubtract(outerCylinderEntityPtr, &innerCylinderEntityPtr, 1))
+	if (SUCCESS != SolidUtil::Modify::BooleanSubtract(outerCylinderEntityPtr, &innerCylinderEntityPtr, 1))
 		return ERROR;
-	if (ERROR == DraftingElementSchema::ToElement(eeh, *outerCylinderEntityPtr, nullptr, model))
+	if (SUCCESS != DraftingElementSchema::ToElement(eeh, *outerCylinderEntityPtr, nullptr, model))
 		return ERROR;
 	return SUCCESS;
 }
@@ -281,7 +311,7 @@ BentleyStatus PDIWT::Waterway::Lock::Cushion::CreateCushion(EditElementHandleR e
 		-uor_m_cushionLength / 2,0,uor_m_cushionThickness }, DVec3d::UnitX(), DVec3d::UnitY(), uor_m_cushionLength,
 		uor_m_cushionWidth, uor_m_cushionLength, uor_m_cushionWidth, true);
 	ISolidPrimitivePtr cushionSolidPtr = ISolidPrimitive::CreateDgnBox(cushionDetail);
-	if (ERROR == DraftingElementSchema::ToElement(eeh, *cushionSolidPtr, NULL, model))
+	if (SUCCESS != DraftingElementSchema::ToElement(eeh, *cushionSolidPtr, NULL, model))
 		return ERROR;
 	return SUCCESS;
 }
@@ -306,7 +336,7 @@ BentleyStatus PDIWT::Waterway::Lock::Wall::CreateWall(EditElementHandleR eeh, Dg
 		-uor_m_wallLength / 2,0,uor_m_wallHeight }, DVec3d::UnitX(), DVec3d::UnitY(), uor_m_wallLength,
 		uor_m_wallThickness, uor_m_wallLength, uor_m_wallThickness, true);
 	ISolidPrimitivePtr wallSolidPtr = ISolidPrimitive::CreateDgnBox(cushionDetail);
-	if (ERROR == DraftingElementSchema::ToElement(eeh, *wallSolidPtr, NULL, model))
+	if (SUCCESS != DraftingElementSchema::ToElement(eeh, *wallSolidPtr, NULL, model))
 		return ERROR;
 	return SUCCESS;
 }
@@ -361,3 +391,4 @@ BentleyStatus PDIWT::Waterway::Lock::Bridge::CreateBridge(EditElementHandleR eeh
 
 	return SUCCESS;
 }
+PDIWT_WATERWAY_LOCK_NAMESPACE_END

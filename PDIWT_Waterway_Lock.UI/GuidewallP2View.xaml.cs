@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using PDIWT.Waterway.Lock.UI.ViewModel;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BM = Bentley.MstnPlatformNET;
 
 namespace PDIWT.Waterway.Lock.UI
@@ -24,12 +12,23 @@ namespace PDIWT.Waterway.Lock.UI
         public GuidewallP2View(BM.AddIn addIn)
         {
             InitializeComponent();
-            DataContext = new ViewModel.GuidewallP2ViewModel(addIn);
+            DataContext = new GuidewallP2ViewModel(addIn);
         }
 
-        public ViewModel.GuidewallP2Data GetData()
+        /// <summary>
+        /// Gets the view's ViewModel.
+        /// </summary>
+        public GuidewallP2ViewModel Vm
         {
-            return ((ViewModel.GuidewallP2ViewModel)DataContext).SelectedData;
+            get
+            {
+                return (GuidewallP2ViewModel)DataContext;
+            }
+        }
+
+        public Model.GuidewallP2Data GetData()
+        {
+            return Vm.SelectedData;
         }
     }
 }

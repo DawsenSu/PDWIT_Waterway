@@ -1,12 +1,16 @@
-﻿<UserControl x:Class="PDIWT.Waterway.Lock.UI.DolphinP11View"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PDIWT.Waterway.Lock.UI"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="300">
+﻿<UserControl
+    x:Class="PDIWT.Waterway.Lock.UI.DolphinP11View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:PDIWT.Waterway.Lock.UI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:xv="clr-namespace:PDIWT.Waterway.Lock.UI.ValidationRules"
+    mc:Ignorable="d" 
+    d:DesignHeight="800" d:DesignWidth="300">
     <UserControl.Resources>
         <Style x:Key="PropertyGridErrorStyle" TargetType="{x:Type xctk:PropertyGrid}">
             <Style.Triggers>
@@ -88,12 +92,30 @@
             ShowSortOptions="False"
             ShowSummary="False"
             ShowTitle="False"
-            Style="{StaticResource PropertyGridErrorStyle}" Grid.ColumnSpan="2" />
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            Style="{StaticResource PropertyGridErrorStyle}">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="PropertyValueChanged">
+                <cmd:EventToCommand Command="{Binding PropertyValueChanged}" PassEventArgsToCommand="False" />
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+
+        </xctk:PropertyGrid>
+
+        <Grid Grid.Row="1" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
             <Button
-                Margin="10,2"
+                Grid.Column="0"
+                Margin="5,0"
                 Command="{Binding ShowPicture}"
                 Content="示意图" />
+            <Button
+                Grid.Column="1"
+                Margin="5,0"
+                Command="{Binding ShowTemplates}"
+                Content="选择模板" />
             <!--<TextBox Style="{StaticResource TextBoxErrorStyle}" Text="{Binding Text, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />-->
         </Grid>
     </Grid>
