@@ -33,10 +33,22 @@
     <ClInclude Include="Components.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ECHelper.h">
+    <ClInclude Include="DolphinP11.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GuidewallPlacementTool.h">
+    <ClInclude Include="DolphinP11Tool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PDIWT_Waterway_Lockcmd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EleOperHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MountPierP1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MountPierP1PlacementTool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,10 +68,19 @@
     <ClCompile Include="Components.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ECHelper.cpp">
+    <ClCompile Include="DolphinP11.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GuidewallPlacementTool.cpp">
+    <ClCompile Include="DolphinP11Tool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EleOperHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MountPierP1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MountPierP1PlacementTool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -67,7 +88,6 @@
     <None Include="PDIWT_Waterway_Lock.keyins" />
     <None Include="PDIWT_Waterway_Lock.mke" />
     <None Include="ClassDiagram.cd" />
-    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="profile drawing.png">

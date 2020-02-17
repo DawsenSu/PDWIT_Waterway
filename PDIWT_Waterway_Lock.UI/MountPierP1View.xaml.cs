@@ -17,19 +17,20 @@ using BM = Bentley.MstnPlatformNET;
 namespace PDIWT.Waterway.Lock.UI
 {
     /// <summary>
-    /// Interaction logic for GuidewalP2View.xaml
+    /// Interaction logic for MountPierP1View.xaml
     /// </summary>
-    public partial class GuidewallP2View : UserControl
+    public partial class MountPierP1View : UserControl
     {
-        public GuidewallP2View(BM.AddIn addIn)
+        public MountPierP1View(BM.AddIn addIn)
         {
+            
             InitializeComponent();
-            DataContext = new ViewModel.GuidewallP2ViewModel(addIn);
+            DataContext = new ViewModel.MountPierP1ViewModel(addIn);
         }
 
-        public ViewModel.GuidewallP2Data GetData()
+        public ViewModel.MountPierP1Data GetData()
         {
-            return ((ViewModel.GuidewallP2ViewModel)DataContext).SelectedData;
+            return ((ViewModel.MountPierP1ViewModel)DataContext).SelectedData;
         }
     }
 }

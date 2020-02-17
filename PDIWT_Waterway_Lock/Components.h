@@ -1,10 +1,7 @@
 #pragma once
-#ifndef Components_h__
-#define Components_h__
-
 #include "stdafx.h"
-#include "ECHelper.h"
-PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
+
+PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN
 
 //////////////////////////////////////////////////////////////////////////
 //
@@ -14,6 +11,7 @@ PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
 //	P3		重力式导航墙
 //////////////////////////////////////////////////////////////////////////
 
+
 #define UOR_Var(type, var, factor) type uor_##var = var * factor;
 
 class IParametersValidate {
@@ -22,26 +20,7 @@ public:
 	virtual ~IParametersValidate() = default;
 };
 
-/************************************************************************/
-/* The interface for model component creation.
-/* Author: DawsenSu						2020/01/17
-/************************************************************************/
-class ModelComponentBase
-{
-public:
-	virtual bool ValidateParameters() = 0;
-	virtual ~ModelComponentBase() = default;
-	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model) = 0;
-	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, TransformCR transform) final;
-	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, DPoint3dCR translation) final;
-	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model, RotMatrixCR rotMatrix) final;
-};
-
-/************************************************************************/
-/* The p2 type dolphin column templates. The unit of all members is meter.
-/* anchor point is the middle base in the front surface
-/* Author: DawsenSu						2020/01/17
-/************************************************************************/
+// Su
 class DolphinColumnP2 : IParametersValidate
 {
 private:
@@ -54,7 +33,6 @@ private:
 
 		BE_PRIVATE_VALUE(double, dolphinSubtractWallThickness)
 		BE_PRIVATE_VALUE(double, dolphinSubtractWallHeight)
-
 public:
 	DolphinColumnP2() {}
 	DolphinColumnP2(double topLength, double topWidth, double bottomLength, double bottomWidth, double height, double subtractWallThickness, double subtractWallHeight)
@@ -71,8 +49,75 @@ public:
 class DolphinColumnP1_P11 : IParametersValidate
 {
 private:
-
+	BE_DATA_VALUE(double, SaftyHeight)
+		BE_DATA_VALUE(double, DolphinColumnTopElevation)
+		BE_DATA_VALUE(double, DolphinColumnBottomElevation)
+		BE_DATA_VALUE(double, DolphinColumnTopLength)
+		BE_DATA_VALUE(double, DolphinColumnTopWidth)
+		BE_DATA_VALUE(double, DolphinColumnTopEdgeRadius)
+		BE_DATA_VALUE(double, DolphinColumnSideEdgeRadius)
+		BE_DATA_VALUE(double, DolphinColumnBottomLength)
+		BE_DATA_VALUE(double, DolphinColumnBottomWidth)
+		BE_DATA_VALUE(double, DolphinColumnHaunchHeight)
+		BE_DATA_VALUE(double, DolphinColumnHaunchLength)
+		BE_DATA_VALUE(double, AngleOfFirstPolylineWall)//角度
+		BE_DATA_VALUE(double, HeightOfFirstPolylineWall)
+		BE_DATA_VALUE(double, AngleOfSecondPolylineWall)//角度
+		BE_DATA_VALUE(double, HeightOfSecondPolylineWall)
+		BE_DATA_VALUE(double, CushionCapTopElevation)
 public:
+	DolphinColumnP1_P11()
+		:m_SaftyHeight(0.0)
+		, m_DolphinColumnTopElevation(0.0)
+		, m_DolphinColumnBottomElevation(0.0)
+		, m_DolphinColumnTopLength(0.0)
+		, m_DolphinColumnTopWidth(0.0)
+		, m_DolphinColumnTopEdgeRadius(0.0)
+		, m_DolphinColumnSideEdgeRadius(0.0)
+		, m_DolphinColumnBottomLength(0.0)
+		, m_DolphinColumnBottomWidth(0.0)
+		, m_DolphinColumnHaunchHeight(0.0)
+		, m_DolphinColumnHaunchLength(0.0)
+		, m_AngleOfFirstPolylineWall(0.0)
+		, m_HeightOfFirstPolylineWall(0.0)
+		, m_AngleOfSecondPolylineWall(0.0)
+		, m_HeightOfSecondPolylineWall(0.0)
+		, m_CushionCapTopElevation(0.0)
+	{}
+	DolphinColumnP1_P11(
+		double SaftyHeight,
+		double DolphinColumnTopElevation,
+		double DolphinColumnBottomElevation,
+		double DolphinColumnTopLength,
+		double DolphinColumnTopWidth,
+		double DolphinColumnTopEdgeRadius,
+		double DolphinColumnSideEdgeRadius,
+		double DolphinColumnBottomLength,
+		double DolphinColumnBottomWidth,
+		double DolphinColumnHaunchHeight,
+		double DolphinColumnHaunchLength,
+		double AngleOfFirstPolylineWall,
+		double HeightOfFirstPolylineWall,
+		double AngleOfSecondPolylineWall,
+		double HeightOfSecondPolylineWall,
+		double CushionCapTopElevation)
+		:m_SaftyHeight(SaftyHeight)
+		, m_DolphinColumnTopElevation(DolphinColumnTopElevation)
+		, m_DolphinColumnBottomElevation(DolphinColumnBottomElevation)
+		, m_DolphinColumnTopLength(DolphinColumnTopLength)
+		, m_DolphinColumnTopWidth(DolphinColumnTopWidth)
+		, m_DolphinColumnTopEdgeRadius(DolphinColumnTopEdgeRadius)
+		, m_DolphinColumnSideEdgeRadius(DolphinColumnSideEdgeRadius)
+		, m_DolphinColumnBottomLength(DolphinColumnBottomLength)
+		, m_DolphinColumnBottomWidth(DolphinColumnBottomWidth)
+		, m_DolphinColumnHaunchHeight(DolphinColumnHaunchHeight)
+		, m_DolphinColumnHaunchLength(DolphinColumnHaunchLength)
+		, m_AngleOfFirstPolylineWall(AngleOfFirstPolylineWall)
+		, m_HeightOfFirstPolylineWall(HeightOfFirstPolylineWall)
+		, m_AngleOfSecondPolylineWall(AngleOfSecondPolylineWall)
+		, m_HeightOfSecondPolylineWall(HeightOfSecondPolylineWall)
+		, m_CushionCapTopElevation(CushionCapTopElevation)
+	{}
 	bool ValidateParameters() override;
 	BentleyStatus CreateDolphin(EditElementHandleR eeh, DgnModelRefR model);
 };
@@ -87,11 +132,7 @@ public:
 	BentleyStatus CreateDolphin(EditElementHandleR eeh, DgnModelRefR model);
 };
 
-/************************************************************************/
-/* Cushion cap template class. The unit of all members is meter.
-/* anchor point is the middle base point in front face
-/* Author: DawsenSu						2020/01/17
-/************************************************************************/
+// Su
 class Cushioncap : IParametersValidate
 {
 private:
@@ -100,21 +141,18 @@ private:
 		BE_PRIVATE_VALUE(double, cushioncapHeight)
 		BE_PRIVATE_VALUE(double, cushioncapLength)
 
-public:	
+public:
 	Cushioncap() {}
 	Cushioncap(double topWidth, double bottomWidth, double height, double length)
 		: m_cushioncapTopWidth(topWidth), m_cushioncapBottomWidth(bottomWidth), m_cushioncapHeight(height), m_cushioncapLength(length) {}
-	Cushioncap(double width, double height, double length)
-		: m_cushioncapTopWidth(width), m_cushioncapBottomWidth(width), m_cushioncapHeight(height), m_cushioncapLength(length) {}
+	Cushioncap(double width,double height, double length)
+		: m_cushioncapTopWidth(width), m_cushioncapBottomWidth(width),m_cushioncapHeight(height), m_cushioncapLength(length) {}
 	bool ValidateParameters() override;
 	BentleyStatus CreateCushioncap(EditElementHandleR eeh, DgnModelRefR model);
 };
 
-/************************************************************************/
-/* Tube pile template class. The unit of all members is meter.
-/* Anchor point is the top centroid of tube pile.
-/* Author: DawsenSu						2020/01/17
-/************************************************************************/
+// Su
+// The unit of this pile is meter
 class Pile : IParametersValidate
 {
 private:
@@ -122,7 +160,6 @@ private:
 	BE_PRIVATE_VALUE(double, pileLength)
 		BE_PRIVATE_VALUE(double, pileDiameter)
 		BE_PRIVATE_VALUE(double, pileThickness)
-
 public:
 	Pile() {}
 	Pile(double length, double diameter, double thickness)
@@ -131,11 +168,7 @@ public:
 	BentleyStatus CreatePile(EditElementHandleR eeh, DgnModelRefR mdoel);
 };
 
-/************************************************************************/
-/* Cushion template class. The unit of all members is meter.
-/* anchor point is the middle base point.
-/* Author: DawsenSu						2020/01/17
-/************************************************************************/
+// nan
 class Cushion : IParametersValidate
 {
 private:
@@ -143,7 +176,6 @@ private:
 	BE_PRIVATE_VALUE(double, cushionThickness)
 		BE_PRIVATE_VALUE(double, cushionLength)
 		BE_PRIVATE_VALUE(double, cushionWidth)
-
 public:
 	Cushion() {}
 	Cushion(double length, double width, double thickness)
@@ -152,11 +184,7 @@ public:
 	BentleyStatus CreateCushion(EditElementHandleR eeh, DgnModelRefR model);
 };
 
-/************************************************************************/
-/* Wall template class. The unit of all member is meter.
-/* anchor point is the middle base point.
-/* Author: DawsenSu						2020/01/17
-/************************************************************************/
+// su
 class Wall : IParametersValidate
 {
 private:
@@ -173,11 +201,6 @@ public:
 	BentleyStatus CreateWall(EditElementHandleR eeh, DgnModelRefR model);
 };
 
-/************************************************************************/
-/* The simple linking bridge between two berth dolphins.
-/* anchor point is the base left corner in front surface.
-/* Author: DawsenSu						2020/01/17
-/************************************************************************/
 class Bridge : IParametersValidate
 {
 	BE_DATA_VALUE(double, length)
@@ -186,14 +209,24 @@ class Bridge : IParametersValidate
 		BE_DATA_VALUE(double, topBoardThickness)
 		BE_DATA_VALUE(double, supportWidth)
 		BE_DATA_VALUE(double, chamferWidth)
-
-public:
+public :
 	Bridge() {}
 	Bridge(double length, double width, double height, double topBoardThickness, double supportWidth, double chamferWidth)
 		: m_length(length), m_width(width), m_height(height), m_topBoardThickness(topBoardThickness), m_supportWidth(supportWidth), m_chamferWidth(chamferWidth) {}
 	bool ValidateParameters() override;
 	BentleyStatus CreateBridge(EditElementHandleR eeh, DgnModelRefR model);
+	
 };
+// su
+//class Fender : IParametersValidate
+//{
+//	//fender
+//	BE_DATA_VALUE(double, fenderTopElevation)
+//		BE_DATA_VALUE(double, fenderBottomElevation)
+//		BE_DATA_VALUE(double, fenderThickness)
+//public:
+//	bool ValidateParameters() override;
+//};
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_END
-#endif // Components_h__
+

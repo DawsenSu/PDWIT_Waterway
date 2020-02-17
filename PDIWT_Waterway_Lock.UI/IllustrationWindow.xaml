@@ -12,6 +12,6 @@
     mc:Ignorable="d">
     <Image
         Margin="3"
-        Source="Images/GuidewallP2.png"
+        Source="Images/DolphinP11.png"
         Stretch="Fill" />
 </Window>

@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D4DA36F5-1BE2-4BD1-95C0-44650D6C236C}</ProjectGuid>
     <OutputType>library</OutputType>
-    <RootNamespace>PDIWT.Waterway.Lock.UI</RootNamespace>
+    <RootNamespace>PDIWT_Waterway_Lock.UI</RootNamespace>
     <AssemblyName>PDIWT_Waterway_Lock.UI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -46,7 +46,6 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -67,7 +66,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Bentley.ECExchange">
-      <HintPath>..\..\..\C#\PDIWT_PiledWharf\MicrostationAssemblies\Bentley.ECExchange.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Bentley\MicroStation CONNECT Edition\MicroStation\Assemblies\ECFramework\Bentley.ECExchange.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Bentley.ECObjects.Interop3">
@@ -99,7 +98,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Bentley.GeometryNET.FB">
-      <HintPath>..\..\..\C#\PDIWT_PiledWharf\MicrostationAssemblies\Bentley.GeometryNET.FB.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Bentley\MicroStation CONNECT Edition\MicroStation\Bentley.GeometryNET.FB.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Bentley.GeometryNET.Structs">
@@ -107,7 +106,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Bentley.Interop.MicroStationDGN">
-      <HintPath>..\..\..\C#\PDIWT_PiledWharf\MicrostationAssemblies\Bentley.Interop.MicroStationDGN.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Bentley\MicroStation CONNECT Edition\MicroStation\Assemblies\Bentley.Interop.MicroStationDGN.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Bentley.MicroStation">
@@ -123,7 +122,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Bentley.MicroStation.WPF.Controls">
-      <HintPath>..\..\..\C#\PDIWT_PiledWharf\MicrostationAssemblies\Bentley.MicroStation.WPF.Controls.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Bentley\MicroStation CONNECT Edition\MicroStation\Assemblies\Bentley.MicroStation.WPF.Controls.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Bentley.Platform">
@@ -140,19 +139,19 @@
     </Reference>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -184,23 +183,23 @@
     </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Xceed.Wpf.Toolkit, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="DolphinGuidewallPlacementView.xaml">
+    <Page Include="DolphinP11View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,20 +207,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="IllustrationForDolphinP11.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="IllustrationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PickupTemplateWindow.xaml">
+    <Page Include="MountPierP1View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PickupTemplateWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Attributes.cs" />
-    <Compile Include="Common\ObjectCopier.cs" />
-    <Compile Include="DolphinGuidewallPlacementView.xaml.cs">
-      <DependentUpon>DolphinGuidewallPlacementView.xaml</DependentUpon>
+    <Compile Include="DolphinP11View.xaml.cs">
+      <DependentUpon>DolphinP11View.xaml</DependentUpon>
     </Compile>
     <Compile Include="GuidewallP2View.xaml.cs">
       <DependentUpon>GuidewallP2View.xaml</DependentUpon>
@@ -232,14 +237,16 @@
     <Compile Include="GuidewallP2WinForm.Designer.cs">
       <DependentUpon>GuidewallP2WinForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IllustrationForDolphinP11.xaml.cs">
+      <DependentUpon>IllustrationForDolphinP11.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IllustrationWindow.xaml.cs">
       <DependentUpon>IllustrationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\DolphinGuidewallPlacementData.cs" />
-    <Compile Include="Model\GuidewallP2Data.cs" />
-    <Compile Include="PickupTemplateWindow.xaml.cs">
-      <DependentUpon>PickupTemplateWindow.xaml</DependentUpon>
+    <Compile Include="MountPierP1View.xaml.cs">
+      <DependentUpon>MountPierP1View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PickupTemplateWindow.xaml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -253,10 +260,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ValidationRules\GuidewallP2DataValidationRule.cs" />
-    <Compile Include="ViewModel\DolphinGuidewallPlacementViewModel.cs" />
+    <Compile Include="ViewModel\DolphinP11ViewModel.cs" />
     <Compile Include="ViewModel\GuidewallP2ViewModel.cs" />
-    <Compile Include="ViewModel\PickupTemplateViewModel.cs" />
+    <Compile Include="ViewModel\MountPierP1ViewModel.cs" />
     <EmbeddedResource Include="GuidewallP2WinForm.resx">
       <DependentUpon>GuidewallP2WinForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +282,11 @@
   <ItemGroup>
     <Resource Include="Images\GuidewallP2.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\DolphinP11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DolphinP11.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

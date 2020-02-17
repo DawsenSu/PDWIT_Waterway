@@ -17,37 +17,37 @@ using BMWPF = Bentley.MstnPlatformNET.WPF;
 namespace PDIWT.Waterway.Lock.UI
 {
     /// <summary>
-    /// Interaction logic for IllustrationWindow.xaml
+    /// Interaction logic for IllustrationForDolphinP11.xaml
     /// </summary>
-    public partial class IllustrationWindow : Window, IDisposable
+    public partial class IllustrationForDolphinP11 : Window, IDisposable
     {
-        public IllustrationWindow(BM.AddIn addIn)
+        public IllustrationForDolphinP11(BM.AddIn addIn)
         {
             InitializeComponent();
 
             m_wpfhelper = new BMWPF.WPFInteropHelper(this);
             m_wpfhelper.Attach(addIn, true, "SettingsWindow");
-            Icon = new BitmapImage(new Uri("pack://application:,,,/PDIWT_Waterway_Lock.UI;component/Images/GuidewallP2.ico", UriKind.RelativeOrAbsolute));
+            Icon = new BitmapImage(new Uri("pack://application:,,,/PDIWT_Waterway_Lock.UI;component/Images/DolphinP11.ico", UriKind.RelativeOrAbsolute));
         }
 
-        ~IllustrationWindow()
+        ~IllustrationForDolphinP11()
         {
             Dispose(false);
         }
 
-        static IllustrationWindow _illustrationWindow;
+        static IllustrationForDolphinP11 _illustrationForDolphinP11;
         BMWPF.WPFInteropHelper m_wpfhelper;
 
         public static void ShowWindow(BM.AddIn addIn)
         {
-            if (_illustrationWindow != null)
+            if (_illustrationForDolphinP11 != null)
             {
-                _illustrationWindow.Focus();
+                _illustrationForDolphinP11.Focus();
                 return;
             };
 
-            _illustrationWindow = new IllustrationWindow(addIn);
-            _illustrationWindow.Show();
+            _illustrationForDolphinP11 = new IllustrationForDolphinP11(addIn);
+            _illustrationForDolphinP11.Show();
         }
         protected override void OnClosed(EventArgs e)
         {
@@ -68,7 +68,7 @@ namespace PDIWT.Waterway.Lock.UI
             }
             m_wpfhelper.Detach();
             m_wpfhelper.Dispose();
-            _illustrationWindow = null;
+            _illustrationForDolphinP11 = null;
         }
     }
 }

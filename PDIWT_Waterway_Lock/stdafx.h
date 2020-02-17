@@ -1,6 +1,4 @@
 #pragma once
-#ifndef stdafx_h__
-#define stdafx_h__
 
 #pragma managed(push, off)
 #define winNT	1
@@ -16,7 +14,6 @@
 #include <DgnPlatform/ISettings.h>
 #include <PSolid\PSolidCoreAPI.h>
 #include "BeDefiner.h"
-#include <iostream>
 
 #pragma managed(pop)
 #include <vcclr.h>
@@ -31,19 +28,18 @@
 #using <Bentley.GeometryNET.dll>
 #using <Bentley.GeometryNET.Structs.dll>
 #using <Bentley.GeometryNET.Common.dll>
-#using "Bentley.General.1.0.dll"
-#using "Bentley.MicroStation.Interfaces.1.0.dll"
+#using <Bentley.General.1.0.dll>
+#using <Bentley.MicroStation.Interfaces.1.0.dll>
 #using <Bentley.MicroStation.dll>
 #using <Bentley.MicroStation.WPF.dll>
 #using <Bentley.UI.dll>
 #using <Bentley.Windowing.dll>
 
 #using "mscorlib.dll"
-//#using "GalaSoft.MvvmLight.dll"
-//#using "GalaSoft.MvvmLight.dll"
-//#using "GalaSoft.MvvmLight.Extras.dll"
-//#using "GalaSoft.MvvmLight.Platform.dll"
-#using "PDIWT_Waterway_Lock.UI.dll"
+#using <GalaSoft.MvvmLight.dll>
+#using <GalaSoft.MvvmLight.Extras.dll>
+#using <GalaSoft.MvvmLight.Platform.dll>
+#using <PDIWT_Waterway_Lock.UI.dll>
 
 USING_NAMESPACE_BENTLEY
 USING_NAMESPACE_BENTLEY_DGNPLATFORM
@@ -51,13 +47,9 @@ USING_NAMESPACE_BENTLEY_MSTNPLATFORM
 USING_NAMESPACE_BENTLEY_MSTNPLATFORM_ELEMENT
 USING_NAMESPACE_BENTLEY_ECOBJECT
 
-#define PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN	namespace PDIWT { namespace Waterway { namespace Lock {
+#define PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN	namespace PDIWT { namespace Waterway { namespace Lock {
 #define PDIWT_WATERWAY_LOCK_NAMESPACE_END }}}
 #define	USING_NAMESPACE_PDIWT_WATERWAY_LOCK using namespace PDIWT::Waterway::Lock;
-
-#define PDIWT_NAMESPACE_BEGIN namespace PDIWT {
-#define PDIWT_NAMESPACE_END	}
-#define USING_NAMESPACE_PDIWT using namespace PDIWT;
 
 using namespace System;
 using namespace System::Reflection;
@@ -75,4 +67,4 @@ namespace BDE = Bentley::DgnPlatformNET::Elements;
 namespace BM = Bentley::MstnPlatformNET;
 namespace BMW = Bentley::MstnPlatformNET::WinForms;
 namespace BMWPF = Bentley::MstnPlatformNET::WPF;
-#endif // stdafx_h__
+

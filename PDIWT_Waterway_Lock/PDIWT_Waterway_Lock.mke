@@ -35,8 +35,13 @@ objList = $(o)Program$(oext) \
           $(o)Components$(oext) \
 		  $(o)GuidewallP2$(oext) \
           $(o)GuidewallP2Tool$(oext) \
-          $(o)ECHelper$(oext) \
-          $(o)GuidewallPlacementTool$(oext) \
+		  $(o)DolphinP11$(oext) \
+          $(o)DolphinP11Tool$(oext) \
+		  $(o)EleOperHelper$(oext) \
+		  $(o)MountPierP1$(oext) \
+		  $(o)MountPierP1PlacementTool$(oext) \
+#          $(o)DimByElementTool$(oext) \
+#          $(o)ElevationNoteToolWinForm$(oext) \
 #          $(o)ElevationNoteTool$(oext) \
 
 #----------------------------------------------------------------------
@@ -69,10 +74,20 @@ $(o)GuidewallP2$(oext) : $(baseDir)GuidewallP2.cpp
 
 $(o)GuidewallP2Tool$(oext) : $(baseDir)GuidewallP2Tool.cpp
 
-$(o)ECHelper$(oext) : $(baseDir)ECHelper.cpp
+$(o)DolphinP11$(oext) : $(baseDir)DolphinP11.cpp
 
-$(o)GuidewallPlacementTool$(oext) : $(baseDir)GuidewallPlacementTool.cpp
+$(o)DolphinP11Tool$(oext) : $(baseDir)DolphinP11Tool.cpp
 
+$(o)EleOperHelper$(oext) : $(baseDir)EleOperHelper.cpp
+
+$(o)MountPierP1$(oext) : $(baseDir)MountPierP1.cpp
+
+$(o)MountPierP1PlacementTool$(oext) : $(baseDir)MountPierP1PlacementTool.cpp
+
+#$(o)GuidewallP2WinForm$(oext) : $(baseDir)GuidewallP2WinForm.cpp GuidewallP2WinForm.resx
+#
+#$(o)ElevationNoteToolWinForm$(oext) : $(baseDir)ElevationNoteToolWinForm.cpp
+#
 #$(o)ElevationNoteTool$(oext) : $(baseDir)ElevationNoteTool.cpp
 #
 #$(o)DimByElementTool$(oext) : $(baseDir)DimByElementTool.cpp
@@ -94,8 +109,8 @@ DLM_NO_IMPLIB           = 1
 DLM_NO_SIGN = 1
 
 ASSEMBLY_VERSION        = 1.0.0.0
-#ASSEMBLY_STRONGNAME     = 1
-#ASSEMBLY_KEYFILE        = $(baseDir)$(appName).snk
+# ASSEMBLY_STRONGNAME     = 1
+# ASSEMBLY_KEYFILE        = $(baseDir)$(appName).snk
 ASSEMBLY_TITLE          = $(appName)
 ASSEMBLY_DESCRIPTION    = waterway solid creation assembly
 ASSEMBLY_PRODUCT_NAME   = $(appName)

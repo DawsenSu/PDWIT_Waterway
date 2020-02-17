@@ -1,12 +1,10 @@
 #pragma once
-#ifndef Program_h__
-#define Program_h__
-
 #include "stdafx.h"
 #include "GuidewallP2Tool.h"
-#include "GuidewallPlacementTool.h"
+#include "DolphinP11Tool.h"
+#include "MountPierP1PlacementTool.h"
 
-PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
+PDIWT_WATERWAY_LOCK_NAMESPACE_BEIGN
 //////////////////////////////////////////////////////////////////////////
 typedef BM::AddIn Base;
 
@@ -38,4 +36,3 @@ public:
 };
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_END
-#endif // Program_h__
