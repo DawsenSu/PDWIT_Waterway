@@ -1,0 +1,12 @@
+#define CMD_PDITEST                                        0x0100000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMDALL                                 0x0101000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD0                                   0x0102000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD1                                   0x0103000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD2                                   0x0104000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD3                                   0x0105000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD4                                   0x0106000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD5                                   0x0107000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD6                                   0x0108000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD7                                   0x0109000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD8                                   0x010a000000000000UI64   /* Class 0         */
+#define CMD_PDITEST_CMD9                                   0x010b000000000000UI64   /* Class 0         */

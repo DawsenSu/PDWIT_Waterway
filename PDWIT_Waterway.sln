@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDIWT_Waterway_Lock.UI", "PDIWT_Waterway_Lock.UI\PDIWT_Waterway_Lock.UI.csproj", "{D4DA36F5-1BE2-4BD1-95C0-44650D6C236C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDL_Unit_Test", "MDL_Unit_Test\MDL_Unit_Test.vcxproj", "{D56945E0-5984-47BA-9F4D-931F4A74AB91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,16 @@ Global
 		{D4DA36F5-1BE2-4BD1-95C0-44650D6C236C}.Release|x64.Build.0 = Release|Any CPU
 		{D4DA36F5-1BE2-4BD1-95C0-44650D6C236C}.Release|x86.ActiveCfg = Release|Any CPU
 		{D4DA36F5-1BE2-4BD1-95C0-44650D6C236C}.Release|x86.Build.0 = Release|Any CPU
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Debug|x64.ActiveCfg = Debug|x64
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Debug|x64.Build.0 = Debug|x64
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Debug|x86.ActiveCfg = Debug|Win32
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Debug|x86.Build.0 = Debug|Win32
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Release|Any CPU.ActiveCfg = Release|Win32
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Release|x64.ActiveCfg = Release|x64
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Release|x64.Build.0 = Release|x64
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Release|x86.ActiveCfg = Release|Win32
+		{D56945E0-5984-47BA-9F4D-931F4A74AB91}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

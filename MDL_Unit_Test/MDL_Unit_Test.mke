@@ -1,0 +1,141 @@
+#--------------------------------------------------------------------------------------
+#    MstnCE  HelloWorld.mke
+#--------------------------------------------------------------------------------------
+PolicyFile = MicroStationPolicy.mki
+DEFAULT_TARGET_PROCESSOR_ARCHITECTURE=x64
+
+appName = MDL_Unit_Test
+
+appObjs = $(o)$(appName)$(oext) \
+			$(o)TestCmds$(oext) \
+			$(o)EleOperHelper$(oext) \
+			$(o)EleCreatorHelper$(oext) \
+			$(o)ShipLockRoomP7Data$(oext) \
+			$(o)ECHelper$(oext) \
+			$(o)Examples$(oext) \
+			$(o)PickTool$(oext) \
+
+appRscs = $(o)$(appName).rsc	 $(o)$(appName)cmd.rsc
+
+baseDir = $(_MakeFilePath)
+mdlLibs = $(MSMDE)library/
+
+%include mdl.mki
+
+#----------------------------------------------------------------------
+# Create needed output directories if they don't exist
+#----------------------------------------------------------------------
+always:
+    ~mkdir $(o)
+    ~mkdir $(rscObjects)
+    ~mkdir $(reqdObjs)
+
+#----------------------------------------------------------------------
+# Define macros for files included in our link and resource merge
+#----------------------------------------------------------------------
+DLM_NO_SIGN       = 1
+DLM_OBJECT_DEST	  = $(o)
+DLM_NAME 	  = $(appName)
+DLM_OBJECT_FILES  = $(appObjs)
+DLM_NO_DLS	  = 1
+DLM_NO_DEF	  = 1
+DLM_NOENTRY	  = 1
+DLM_NO_MANIFEST   = 1
+DLM_DEST	  = $(mdlapps)
+
+
+
+LINKER_LIBRARIES            + $(mdlLibs)3dModeling.lib
+LINKER_LIBRARIES            + $(mdlLibs)animcore.lib
+LINKER_LIBRARIES            + $(mdlLibs)BaseGeoCoord.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.GeoCoord.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.imodelconnection.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.imodelmessage.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.MicroStation.MaterialControl.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.PrintDefinitions.lib
+LINKER_LIBRARIES            + $(mdlLibs)Bentley.PrintFoundation.lib
+LINKER_LIBRARIES            + $(mdlLibs)BentleyAllocator.lib
+LINKER_LIBRARIES            + $(mdlLibs)BentleyGeom.lib
+LINKER_LIBRARIES            + $(mdlLibs)BentleyGeomSerialization.lib
+LINKER_LIBRARIES            + $(mdlLibs)BeXml.lib
+LINKER_LIBRARIES            + $(mdlLibs)Constraint2dCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)Constraint2dElement.lib
+LINKER_LIBRARIES            + $(mdlLibs)Constraint3dCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)Constraint3dElement.lib
+LINKER_LIBRARIES            + $(mdlLibs)dbpwise.lib
+LINKER_LIBRARIES            + $(mdlLibs)DgnGeoCoord.lib
+LINKER_LIBRARIES            + $(mdlLibs)DgnPlatform.lib
+LINKER_LIBRARIES            + $(mdlLibs)DgnView.lib
+LINKER_LIBRARIES            + $(mdlLibs)ECObjects.lib
+LINKER_LIBRARIES            + $(mdlLibs)ImageLib.lib
+LINKER_LIBRARIES            + $(mdlLibs)InsolationLib.lib
+LINKER_LIBRARIES            + $(mdlLibs)mdlbltin.lib
+LINKER_LIBRARIES            + $(mdlLibs)mdlxmltools.lib
+LINKER_LIBRARIES            + $(mdlLibs)mspsolid.lib
+LINKER_LIBRARIES            + $(mdlLibs)mstntoolsubs.lib
+LINKER_LIBRARIES            + $(mdlLibs)nativewindow.lib
+LINKER_LIBRARIES            + $(mdlLibs)nativewinmfc.lib
+LINKER_LIBRARIES            + $(mdlLibs)PointCloud.lib
+LINKER_LIBRARIES            + $(mdlLibs)PSolidAcisInterop.lib
+LINKER_LIBRARIES            + $(mdlLibs)PSolidCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)Publish.lib
+LINKER_LIBRARIES            + $(mdlLibs)RasterCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)rasterlib.lib
+LINKER_LIBRARIES            + $(mdlLibs)RmgrTools.lib
+LINKER_LIBRARIES            + $(mdlLibs)SmartFeature.lib
+LINKER_LIBRARIES            + $(mdlLibs)splindlm.lib
+#LINKER_LIBRARIES            + $(mdlLibs)sqlite3.lib
+LINKER_LIBRARIES            + $(mdlLibs)TerrainModelCore.lib
+LINKER_LIBRARIES            + $(mdlLibs)TerrainModelElementHandler.lib
+LINKER_LIBRARIES            + $(mdlLibs)videolib.lib
+LINKER_LIBRARIES            + $(mdlLibs)VisEdgesLib.lib
+
+
+#--------------------------------------------
+#	Create command table and header file
+#--------------------------------------------
+$(baseDir)$(appName)cmd.h  : $(baseDir)$(appName)cmd.r
+
+$(o)$(appName)cmd.rsc        : $(baseDir)$(appName)cmd.r
+
+#-----------------------------------------------------------------------
+#       Generate resource files
+#-----------------------------------------------------------------------
+$(o)$(appName).rsc          : $(baseDir)$(appName).r
+
+#----------------------------------------------------------------------
+#	Generate MA
+#----------------------------------------------------------------------
+$(mdlapps)$(appName).ma     : $(appRscs)
+        $(msg)
+        > $(o)make.opt
+        -o$@
+        $(appRscs)
+        <
+        $(RLibCmd) @$(o)make.opt
+        ~time
+
+
+#-----------------------------------------------------------------------------------------
+#	Builds any necessary CODE modules and link them to DLL
+#-----------------------------------------------------------------------------------------
+$(o)$(appName)$(oext)       : $(baseDir)$(appName).cpp
+
+$(o)TestCmds$(oext)			: $(baseDir)TestCmds.cpp
+
+$(o)EleOperHelper$(oext)	: $(baseDir)EleOperHelper.cpp
+
+$(o)EleCreatorHelper$(oext) : $(baseDir)EleCreatorHelper.cpp
+
+$(o)ShipLockRoomP7Data$(oext) : $(baseDir)ShipLockRoomP7Data.cpp
+
+$(o)ECHelper$(oext) : $(baseDir)ECHelper.cpp
+
+$(o)Examples$(oext) : $(baseDir)Examples.cpp
+
+$(o)PickTool$(oext) : $(baseDir)PickTool.cpp
+
+%include dlmlink.mki
+
+# now there is a line-feed after the last instruction
