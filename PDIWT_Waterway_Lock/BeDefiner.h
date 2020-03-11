@@ -510,4 +510,7 @@ private: \
 //*/
 //#define DEBUG_REBAR_THIS_FILE static const char *REBAR_THIS_FILE = __FILE__;
 
+// Type defines
+
+
 #endif

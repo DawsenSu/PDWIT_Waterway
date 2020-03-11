@@ -13,7 +13,7 @@ public:
 	//! @param[in]	pathByDefinedVariable	The defined system variable which define the path to search ecschema file.
 	//!										This defined variable must be in organization level.
 	//! @return SUCCESS if import ecSchema file without error
-	static BentleyStatus ImportECSChemaInActiveDgnBasedOnDefinedVariable(WString ecschemaFullName, WString pathByDefinedVariable);
+	EXPORT_ATTRIBUTE static BentleyStatus ImportECSChemaInActiveDgnBasedOnDefinedVariable(WString ecschemaFullName, WString pathByDefinedVariable);
 	//!	Write the information in dataObj into ECIstance.
 	//! @param[in]	instance			The ECinstance Which to be written into.
 	//! @param[in]	dataObj				The managed object containing the data which will be use to write into ecinstance
@@ -28,7 +28,7 @@ public:
 	//! @param[in]	name				The name to identify the element
 	//! @param[in]	code				The code to mark different element in same category
 	//! @return	 SUCCESS if write operation is successful.
-	static BentleyStatus SchedulePDIWTBaseECInstanceOnElement(EditElementHandleR eeh, WStringCR name, WStringCR code);
+	EXPORT_ATTRIBUTE static BentleyStatus SchedulePDIWTBaseECInstanceOnElement(EditElementHandleR eeh, WStringCR name, WStringCR code);
 
 
 	//! Get the name and code from editElementHandle which is attached a PDIWTBase instance.
@@ -36,7 +36,7 @@ public:
 	//! @param[out] name				The element name in PDIWTBase
 	//! @param[out] code				The element code in PDIWTBase
 	//! @return		SUCCESS if get operation is successful.
-	static BentleyStatus GetPDIWTBaseNameAndCode(EditElementHandleR eeh, WStringR name, WStringR code);
+	EXPORT_ATTRIBUTE static BentleyStatus GetPDIWTBaseNameAndCode(EditElementHandleR eeh, WStringR name, WStringR code);
 };
 PDIWT_NAMESPACE_END
 

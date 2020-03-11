@@ -18,6 +18,12 @@ MDLMKI = $(MSMDE)mki/
 mdlLibs = $(MSMDE)library/
 
 #--------------------------------------------------------------------------------------------------
+#  Additional Includes folders
+#--------------------------------------------------------------------------------------------------
+#dirToSearch = $(MSMDE)include\DawsenSu
+#%include cincapnd.mki
+
+#--------------------------------------------------------------------------------------------------
 #  Includes
 #--------------------------------------------------------------------------------------------------
 
@@ -37,7 +43,9 @@ objList = $(o)Program$(oext) \
           $(o)GuidewallP2Tool$(oext) \
           $(o)ECHelper$(oext) \
           $(o)GuidewallPlacementTool$(oext) \
-#          $(o)ElevationNoteTool$(oext) \
+          $(o)CreateElementByProxyObjs$(oext) \
+          $(o)GuidewallP3Tool$(oext) \
+          $(o)RailTool$(oext) \
 
 #----------------------------------------------------------------------
 # Create the command table include file.
@@ -73,10 +81,12 @@ $(o)ECHelper$(oext) : $(baseDir)ECHelper.cpp
 
 $(o)GuidewallPlacementTool$(oext) : $(baseDir)GuidewallPlacementTool.cpp
 
-#$(o)ElevationNoteTool$(oext) : $(baseDir)ElevationNoteTool.cpp
-#
-#$(o)DimByElementTool$(oext) : $(baseDir)DimByElementTool.cpp
-#
+$(o)CreateElementByProxyObjs$(oext) : $(baseDir)CreateElementByProxyObjs.cpp
+
+$(o)GuidewallP3Tool$(oext) : $(baseDir)GuidewallP3Tool.cpp
+
+$(o)RailTool$(oext) : $(baseDir)RailTool.cpp
+
 %include compileForCLRStop.mki
 
 #----------------------------------------------------------------------
@@ -143,11 +153,12 @@ LINKER_LIBRARIES            + $(mdlLibs)rasterlib.lib
 LINKER_LIBRARIES            + $(mdlLibs)RmgrTools.lib
 LINKER_LIBRARIES            + $(mdlLibs)SmartFeature.lib
 LINKER_LIBRARIES            + $(mdlLibs)splindlm.lib
-#LINKER_LIBRARIES            + $(mdlLibs)sqlite3.lib
 LINKER_LIBRARIES            + $(mdlLibs)TerrainModelCore.lib
 LINKER_LIBRARIES            + $(mdlLibs)TerrainModelElementHandler.lib
 LINKER_LIBRARIES            + $(mdlLibs)videolib.lib
 LINKER_LIBRARIES            + $(mdlLibs)VisEdgesLib.lib
+#LINKER_LIBRARIES            + $(mdlLibs)\DawsenSu\rttr\rttr_core.lib
+#LINKER_LIBRARIES            + $(mdlLibs)\DawsenSu\rttr\rttr_core_d.lib
 
 #----------------------------------------------------------------------
 # Add the command table to the dll.

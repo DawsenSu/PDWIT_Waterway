@@ -5,6 +5,9 @@
 #include "stdafx.h"
 #include "GuidewallP2Tool.h"
 #include "GuidewallPlacementTool.h"
+#include "CreateElementByProxyObjs.h"
+#include "GuidewallP3Tool.h"
+#include "RailTool.h"
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
 //////////////////////////////////////////////////////////////////////////
@@ -27,6 +30,7 @@ public:
 public ref class KeyinCommands
 {
 public:
+#pragma region Create
 	//! ´Þ·å
 	static	void	CreateDolphinP1(System::String^ unparsed);
 	//! ¶ÎÒ»·æ
@@ -35,6 +39,21 @@ public:
 	static	void	CreateGuidewallP2(System::String^ unparsed);
 	//! ³Â¹ÚÄÏ
 	static	void	CreateGuidewallP3(System::String^ unparsed);
+#pragma endregion
+
+#pragma region Arrangement
+	static	void	ArrangeDolphinGuidewall(System::String^ unparsed);
+
+	static	void	CreateElementByProxyObjs(System::String^ unparsed);
+
+	static	void	CreateGravitationalGuidewall(System::String^ unparsed);
+#pragma endregion
+
+#pragma region Test
+	static	void	Test(System::String^ unparsed);
+#pragma endregion
+
+
 };
 
 PDIWT_WATERWAY_LOCK_NAMESPACE_END

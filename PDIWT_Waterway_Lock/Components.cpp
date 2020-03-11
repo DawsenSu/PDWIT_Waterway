@@ -39,7 +39,7 @@ bool PDIWT::Waterway::Lock::DolphinColumnP2::ValidateParameters()
 	if (m_dolphinTopWidth <= 0 || m_dolphinTopLength <= 0 || m_dolphinBottomWidth <= 0 || m_dolphinBottomLength <= 0
 		|| m_dolphinHeight <= 0 || m_dolphinSubtractWallThickness <= 0 || m_dolphinSubtractWallHeight <= 0)
 		return false;
-	if (m_dolphinSubtractWallThickness >= min(m_dolphinTopWidth, m_dolphinBottomWidth) || m_dolphinSubtractWallHeight >= m_dolphinHeight)
+	if (m_dolphinSubtractWallThickness >= std::min<double>(m_dolphinTopWidth, m_dolphinBottomWidth) || m_dolphinSubtractWallHeight >= m_dolphinHeight)
 		return false;
 	return true;
 }
@@ -63,7 +63,7 @@ BentleyStatus PDIWT::Waterway::Lock::DolphinColumnP2::CrerateDolphin(EditElement
 			uor_m_dolphinTopLength, uor_m_dolphinTopWidth, true);
 	ISolidPrimitivePtr mainbodyPtr = ISolidPrimitive::CreateDgnBox(mainbodyDetail);
 
-	double uor_dolphinSubstractWallLength = max(uor_m_dolphinTopLength, uor_m_dolphinBottomLength);
+	double uor_dolphinSubstractWallLength = std::max<double>(uor_m_dolphinTopLength, uor_m_dolphinBottomLength);
 	DgnBoxDetail subtractbodyDetail = DgnBoxDetail(DPoint3d{ -uor_dolphinSubstractWallLength / 2, 0, uor_m_dolphinHeight - uor_m_dolphinSubtractWallHeight },
 		DPoint3d{ -uor_dolphinSubstractWallLength / 2, 0,uor_m_dolphinHeight }, DVec3d::UnitX(), DVec3d::UnitY(),
 		uor_dolphinSubstractWallLength, uor_m_dolphinSubtractWallThickness,
@@ -300,7 +300,44 @@ BentleyStatus PDIWT::Waterway::Lock::Bridge::CreateBridge(EditElementHandleR eeh
 }
 
 
+bool ReinforePlate::ValidateParameters()
+{
+	if (m_bottomWidth <= 0 || m_topWidth <= 0 || m_height <= 0 || m_thickness <= 0)
+		return false;
+	else
+		return true;
+}
 
+BentleyStatus PDIWT::Waterway::Lock::ReinforePlate::Create(EditElementHandleR eeh, DgnModelRefR model)
+{
+	if (!ValidateParameters())
+		return ERROR;
+	double uorpermeter = model.GetModelInfoCP()->GetUorPerMeter();
+	UOR_Var(double, m_bottomWidth, uorpermeter)
+		UOR_Var(double, m_topWidth, uorpermeter)
+		UOR_Var(double, m_height, uorpermeter)
+		UOR_Var(double, m_thickness, uorpermeter)
 
+		bvector<DVec3d> _vecs =
+	{
+		DVec3d::From(0,0,uor_m_height),
+		DVec3d::From(uor_m_topWidth, 0, 0),
+		DVec3d::From(uor_m_bottomWidth - uor_m_topWidth,0,-uor_m_height)
+	};
+
+	bvector<DPoint3d> _pts = { DPoint3d::From(0,-uor_m_thickness / 2) };
+	for (size_t i = 0; i < _vecs.size(); i++)
+	{
+		_pts.push_back(_pts.at(i) + _vecs.at(i));
+	}
+	CurveVectorPtr _profileCurve = CurveVector::CreateLinear(_pts, CurveVector::BOUNDARY_TYPE_Outer);
+	DgnExtrusionDetail _extrusionDetail = DgnExtrusionDetail(_profileCurve, DVec3d::From(0, uor_m_thickness, 0), true);
+	ISolidPrimitivePtr _reinforcePlateSolidPrimitive = ISolidPrimitive::CreateDgnExtrusion(_extrusionDetail);
+	if (SUCCESS != DraftingElementSchema::ToElement(eeh, *_reinforcePlateSolidPrimitive, nullptr, model))
+		return ERROR;
+	return SUCCESS;
+}
 PDIWT_WATERWAY_LOCK_NAMESPACE_END
+
+
 

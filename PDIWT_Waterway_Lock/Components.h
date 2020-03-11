@@ -3,7 +3,6 @@
 #define Components_h__
 
 #include "stdafx.h"
-#include "ECHelper.h"
 PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN
 
 //////////////////////////////////////////////////////////////////////////
@@ -195,5 +194,20 @@ public:
 	BentleyStatus CreateBridge(EditElementHandleR eeh, DgnModelRefR model);
 };
 
+class ReinforePlate : ModelComponentBase
+{
+	BE_DATA_VALUE(double, bottomWidth)
+		BE_DATA_VALUE(double, topWidth)
+		BE_DATA_VALUE(double, height)
+		BE_DATA_VALUE(double, thickness)
+public:
+	ReinforePlate() {}
+	ReinforePlate(double bottomWidth, double topWidth, double  height, double thickness) : m_bottomWidth(bottomWidth), m_topWidth(topWidth), m_height(height), m_thickness(thickness){}
+	virtual bool ValidateParameters() override;
+
+
+	virtual BentleyStatus Create(EditElementHandleR eeh, DgnModelRefR model) override;
+
+};
 PDIWT_WATERWAY_LOCK_NAMESPACE_END
 #endif // Components_h__

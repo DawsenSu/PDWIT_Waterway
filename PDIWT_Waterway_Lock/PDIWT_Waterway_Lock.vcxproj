@@ -78,7 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(MSINC);$(IncludePath)</IncludePath>
+    <IncludePath>$(MSINC);C:\Program Files\Bentley\MicroStationCONNECTSDK\include\DawsenSu;$(IncludePath)</IncludePath>
     <LibraryPath>$(MSLIB);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -129,24 +129,45 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BeDefiner.h" />
+    <ClInclude Include="Common.h" />
     <ClInclude Include="Components.h" />
+    <ClInclude Include="CreateElementByProxyObjs.h" />
     <ClInclude Include="ECHelper.h" />
     <ClInclude Include="GuidewallP2.h" />
     <ClInclude Include="GuidewallP2Tool.h" />
+    <ClInclude Include="GuidewallP3Tool.h" />
     <ClInclude Include="GuidewallPlacementTool.h" />
+    <ClInclude Include="PDIWTDefiner.h" />
     <ClInclude Include="Program.h" />
+    <ClInclude Include="RailTool.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Common.cpp" />
     <ClCompile Include="Components.cpp" />
+    <ClCompile Include="CreateElementByProxyObjs.cpp" />
     <ClCompile Include="ECHelper.cpp" />
     <ClCompile Include="GuidewallP2.cpp" />
     <ClCompile Include="GuidewallP2Tool.cpp" />
+    <ClCompile Include="GuidewallP3Tool.cpp" />
     <ClCompile Include="GuidewallPlacementTool.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="RailTool.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -154,6 +175,10 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,12 @@
       <Keyword CommandWord="Create" SubtableRef="CreateSubKeyin">
         <Options Required="true" />
       </Keyword>
+      <Keyword CommandWord="Arrange" SubtableRef="ArrangeSubKeyin">
+        <Options Required="true" />
+      </Keyword>
+      <Keyword CommandWord="Test">
+        <Options Required="true" />
+      </Keyword>
     </KeyinTable>
   </SubKeyinTables>
 
@@ -24,11 +30,27 @@
     </KeyinTable>
   </SubKeyinTables>
 
+  <SubKeyinTables>
+    <KeyinTable ID="ArrangeSubKeyin">
+      <Keyword CommandWord="DolphinGuidewall"></Keyword>
+      <Keyword CommandWord="CreateElementByProxyObjs"></Keyword>
+      <Keyword CommandWord="CreateGravitationalGuidewall"></Keyword>
+    </KeyinTable>
+  </SubKeyinTables>
+  
   <KeyinHandlers>
+    <!--Create Handler-->
     <KeyinHandler Keyin="Waterway Create DolphinP1" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateDolphinP1"/>
     <KeyinHandler Keyin="Waterway Create DolphinP11" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateDolphinP11"/>
     <KeyinHandler Keyin="Waterway Create GuidewallP2" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateGuidewallP2"/>
     <KeyinHandler Keyin="Waterway Create GuidewallP3" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateGuidewallP3"/>
+    <!--Arrange Handler-->
+    <KeyinHandler Keyin="Waterway Arrange DolphinGuidewall" Function="PDIWT.Waterway.Lock.KeyinCommands.ArrangeDolphinGuidewall"/>
+    <KeyinHandler Keyin="Waterway Arrange CreateElementByProxyObjs" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateElementByProxyObjs"/>
+    <KeyinHandler Keyin="Waterway Arrange CreateGravitationalGuidewall" Function="PDIWT.Waterway.Lock.KeyinCommands.CreateGravitationalGuidewall"/>
+    <!--Test Handler-->
+    <KeyinHandler Keyin="Waterway Test" Function="PDIWT.Waterway.Lock.KeyinCommands.Test"/>
+  
   </KeyinHandlers>
   
 </KeyinTree>

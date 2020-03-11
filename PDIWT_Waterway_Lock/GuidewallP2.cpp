@@ -233,7 +233,7 @@ BentleyStatus GuidewallP2::CreateGuidewallP2(EditElementHandleR eeh, DgnModelRef
 		//Use the ECHelper Method
 		if (SUCCESS != ECHelper::ImportECSChemaInActiveDgnBasedOnDefinedVariable(_ecSchemaFullName, _definedECSchemaFilePathVariable)) return ERROR;
 
-		DgnECInstanceEnablerPtr _ecMainInstanceEnabler = _ecMgr.ObtainInstanceEnablerByName(_schemaInfo.GetSchemaName(), _ecClassName.GetWCharCP(), _dgnFile);
+		DgnECInstanceEnablerP _ecMainInstanceEnabler = _ecMgr.ObtainInstanceEnablerByName(_schemaInfo.GetSchemaName(), _ecClassName.GetWCharCP(), _dgnFile);
 		StandaloneECInstanceR _wipInstance = _ecMainInstanceEnabler->GetSharedWipInstance();
 
 		//! Base part assignment

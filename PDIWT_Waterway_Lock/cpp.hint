@@ -15,3 +15,5 @@
 // such as names of functions and macros.
 // For more information see https://go.microsoft.com/fwlink/?linkid=865984
 #define BE_DATA_VALUE(type, var) public: type Get##var() const { return m_##var; } type &Pop##var() { return m_##var; } void Set##var(type arg) { m_##var = arg; } private: type m_##var;
+#define PDIWT_STRUCTDEF(_name_) PDIWT_TYPEDEF(_name_, struct);
+#define RTTR_ENABLE

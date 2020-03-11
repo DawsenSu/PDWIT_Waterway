@@ -14,17 +14,17 @@
     <Grid>
         <xctk:PropertyGrid
             x:Name="PlacmentInputPropertyGrid"
-            AutoGenerateProperties="False"
+            AutoGenerateProperties="True"
             SelectedObject="{Binding SelectedData, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
             ShowSearchBox="False"
             ShowSortOptions="False"
             ShowSummary="False"
             ShowTitle="False">
-            <xctk:PropertyGrid.PropertyDefinitions>
+            <!--<xctk:PropertyGrid.PropertyDefinitions>
                 <xctk:PropertyDefinition TargetProperties="Method" />
                 <xctk:PropertyDefinition TargetProperties="Interval" />
                 <xctk:PropertyDefinition TargetProperties="Number" />
-            </xctk:PropertyGrid.PropertyDefinitions>
+            </xctk:PropertyGrid.PropertyDefinitions>-->
         </xctk:PropertyGrid>
     </Grid>
 </UserControl>

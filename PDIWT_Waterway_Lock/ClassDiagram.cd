@@ -1,95 +1,150 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="GuidewallP2Tool">
+  <Class Name="PDIWT::Waterway::Lock::GuidewallP2Tool">
     <Position X="12.5" Y="6.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>EABAAEAAAAABAAAAAAiAAAgAAQgAABAAAAAAEAAAAgA=</HashCode>
+      <HashCode>EABAAEABAAABAAAAAIiAAAgAAQgAABAAAAAAEAAAAgA=</HashCode>
       <FileName>GuidewallP2Tool.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GuidewallP2">
+  <Class Name="PDIWT::Waterway::Lock::GuidewallP2">
     <Position X="8.5" Y="6.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAABA0AAAQIAAAACAxAAAAAAAAAAAAAAAQAA=</HashCode>
+      <HashCode>AAgABAAAAABAUAAAQIBIAACAxAAAAAAAAAAAAAAAUAA=</HashCode>
       <FileName>GuidewallP2.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Wall" Collapsed="true">
+  <Class Name="PDIWT::Waterway::Lock::Wall" Collapsed="true">
     <Position X="12.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAQAAAAAAIAAAAA=</HashCode>
+      <HashCode>CAVAACAAAAAAAAAGABAIAAACAAAAAAQCAAAAAICAAAE=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Cushion">
+  <Class Name="PDIWT::Waterway::Lock::Cushion">
     <Position X="6.25" Y="2.75" Width="1.5" />
-    <InheritanceLine Type="IParametersValidate" FixedToPoint="true">
-      <Path>
-        <Point X="10.5" Y="1.796" />
-        <Point X="10.5" Y="2.375" />
-        <Point X="7.75" Y="2.375" />
-        <Point X="7.75" Y="2.75" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIIAAAAA=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Pile">
+  <Class Name="PDIWT::Waterway::Lock::Pile">
     <Position X="9.5" Y="2.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DolphinColumnP1_P11">
+  <Class Name="PDIWT::Waterway::Lock::DolphinColumnP1_P11">
     <Position X="14.5" Y="2.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="IParametersValidate">
+  <Class Name="PDIWT::Waterway::Lock::IParametersValidate">
     <Position X="9" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAQ=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DolphinColumnP2" Collapsed="true">
+  <Class Name="PDIWT::Waterway::Lock::DolphinColumnP2" Collapsed="true">
     <Position X="2.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAIAAAAA=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DolphinColumnP3" Collapsed="true">
+  <Class Name="PDIWT::Waterway::Lock::DolphinColumnP3" Collapsed="true">
     <Position X="4" Y="2.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Cushioncap" Collapsed="true">
+  <Class Name="PDIWT::Waterway::Lock::Cushioncap" Collapsed="true">
     <Position X="17.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAABEA=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Bridge" Collapsed="true">
+  <Class Name="PDIWT::Waterway::Lock::Bridge" Collapsed="true">
     <Position X="0.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAgAAAAAAIAAAAA=</HashCode>
+      <HashCode>QAAABABACQgEQAAhAIACCARIBAhAQAiECAAAAIEAAAA=</HashCode>
       <FileName>Components.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Struct Name="GuideWallP2Data" Collapsed="true">
-    <Position X="4.5" Y="6.25" Width="2.75" />
+  <Class Name="PDIWT::ECHelper">
+    <Position X="1" Y="5.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>ECHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="PDIWT::Waterway::Lock::NativeGuideWallP3Data">
+    <Position X="3.25" Y="7.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAABAAIAAAAAAAAAECEAAAAAAAAAAQAAAAACEA=</HashCode>
+      <FileName>GuidewallP3Tool.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PDIWT::Waterway::Lock::GuidewallP3Tool">
+    <Position X="0.5" Y="7.75" Width="2.5" />
+    <NestedTypes>
+      <Enum Name="PDIWT::Waterway::Lock::GuidewallP3Tool::ToolState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GuidewallP3Tool.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>FABAAQABAAABAwAAAIgQAAgAAwgApAAAAAAAEAAAAAA=</HashCode>
+      <FileName>GuidewallP3Tool.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PDIWT::Waterway::Lock::GuidewallPlacementTool">
+    <Position X="6" Y="7.75" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="PDIWT::Waterway::Lock::GuidewallPlacementTool::ToolState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GuidewallPlacementTool.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>FABARUARAAABAgAABIgAAAgAIQgQJAAEAAAAEAQAAEA=</HashCode>
+      <FileName>GuidewallPlacementTool.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PDIWT::Waterway::Lock::TypeARailData">
+    <Position X="8.5" Y="11.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GuidewallP2.h</FileName>
+      <FileName>RailTool.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PDIWT::Waterway::Lock::TypeBRailData">
+    <Position X="10.5" Y="11.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gAEAgAAAAAgAAAgAAAoAQAAAAAAAAAAAAAAQAAgAAAA=</HashCode>
+      <FileName>RailTool.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PDIWT::Waterway::Lock::CurveLocationCompare">
+    <Position X="8.5" Y="13" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RailTool.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PDIWT::Waterway::Lock::RailTool">
+    <Position X="13" Y="11.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>FABAAQAAAAABAwAAAJgAAAAAAAgBJAAAAAAAEAAAAAA=</HashCode>
+      <FileName>RailTool.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Font Name="Segoe UI" Size="9" />

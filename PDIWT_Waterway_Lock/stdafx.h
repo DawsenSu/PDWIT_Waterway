@@ -1,6 +1,7 @@
 #pragma once
 #ifndef stdafx_h__
 #define stdafx_h__
+#define  PURE_MDL
 
 #pragma managed(push, off)
 #define winNT	1
@@ -15,10 +16,20 @@
 #include <DgnPlatform/DimensionHandler.h>
 #include <DgnPlatform/ISettings.h>
 #include <PSolid\PSolidCoreAPI.h>
+#include <Mstn\Smartfeature\SmartfeatureAPI.h>
+#include <Mstn\Smartfeature\SmartFeature.r.h>
+
 #include "BeDefiner.h"
+#include "PDIWTDefiner.h"
 #include <iostream>
+#include <algorithm>
+#include <tuple>
+#include "rapidxml.hpp"
+
 
 #pragma managed(pop)
+#ifndef PURE_MDL
+
 #include <vcclr.h>
 #include <msclr/marshal.h>
 #include <msclr/marshal_cppstd.h>
@@ -44,20 +55,19 @@
 #using <GalaSoft.MvvmLight.Platform.dll>
 #using <PDIWT_Waterway_Lock.UI.dll>
 
+#endif // !PURE_MDL
+
+
 USING_NAMESPACE_BENTLEY
 USING_NAMESPACE_BENTLEY_DGNPLATFORM
 USING_NAMESPACE_BENTLEY_MSTNPLATFORM
 USING_NAMESPACE_BENTLEY_MSTNPLATFORM_ELEMENT
 USING_NAMESPACE_BENTLEY_ECOBJECT
+USING_NAMESPACE_SMARTFEATURE
+using namespace rapidxml;  //!  for rapid xml toolkit
 
-#define PDIWT_WATERWAY_LOCK_NAMESPACE_BEGIN	namespace PDIWT { namespace Waterway { namespace Lock {
-#define PDIWT_WATERWAY_LOCK_NAMESPACE_END }}}
-#define	USING_NAMESPACE_PDIWT_WATERWAY_LOCK using namespace PDIWT::Waterway::Lock;
-
-#define PDIWT_NAMESPACE_BEGIN namespace PDIWT {
-#define PDIWT_NAMESPACE_END	}
-#define USING_NAMESPACE_PDIWT using namespace PDIWT;
-
+#ifndef PURE_MDL
+//! Managed Class namespace section
 using namespace System;
 using namespace System::Reflection;
 using namespace System::ComponentModel;
@@ -74,4 +84,11 @@ namespace BDE = Bentley::DgnPlatformNET::Elements;
 namespace BM = Bentley::MstnPlatformNET;
 namespace BMW = Bentley::MstnPlatformNET::WinForms;
 namespace BMWPF = Bentley::MstnPlatformNET::WPF;
+#endif // !PURE_MDL
+
+
+// Switch for program control
+#define LOG //to output dmsgsPrint to debug
+#define DEBUG
+
 #endif // stdafx_h__
